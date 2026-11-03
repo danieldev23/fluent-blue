@@ -1,0 +1,109 @@
+# Fluent Blue
+
+> A design system for Python desktop applications on PyQt6 and PySide6.
+
+## Components
+
+- [Alert](docs/ai/components/Alert.md): An inline message in the page flow.
+- [Avatar](docs/ai/components/Avatar.md): A user image or initials.
+- [AvatarGroup](docs/ai/components/AvatarGroup.md): Overlapping avatars with a "+N" overflow.
+- [Badge](docs/ai/components/Badge.md): A small status label or dot.
+- [BadgeOverlay](docs/ai/components/BadgeOverlay.md): Wraps any child widget and pins a Badge to its top-right corner.
+- [Breadcrumb](docs/ai/components/Breadcrumb.md): A trail of links to parent locations; the last entry is the current page.
+- [Button](docs/ai/components/Button.md): A push button with variants, sizes, icons and a loading state.
+- [Calendar](docs/ai/components/Calendar.md): A month view. Arrow keys move, Enter selects and Page Up/Down change the month.
+- [Card](docs/ai/components/Card.md): A content container.
+- [Checkbox](docs/ai/components/Checkbox.md): A checkbox, with optional indeterminate state.
+- [CircularProgress](docs/ai/components/CircularProgress.md): A circular progress indicator, which also serves as a spinner.
+- [ClearableInput](docs/ai/components/ClearableInput.md): An Input with the clear button on by default.
+- [CodeEditor](docs/ai/components/CodeEditor.md): A code editor with line numbers, syntax colors and smart indentation.
+- [CollapsiblePanel](docs/ai/components/CollapsiblePanel.md): A panel whose content expands and collapses.
+- [ColorPicker](docs/ai/components/ColorPicker.md): A swatch button that opens a saturation/value square, hue bar, hex field and presets.
+- [Column](docs/ai/components/Column.md): Describes one table column.
+- [ComboBox](docs/ai/components/ComboBox.md): An editable Select with type-ahead; free text is allowed.
+- [Command](docs/ai/components/Command.md): An entry in the palette. action runs when the command is chosen.
+- [CommandPalette](docs/ai/components/CommandPalette.md): A searchable command launcher.
+- [ConfirmDialog](docs/ai/components/ConfirmDialog.md): Ask the user to confirm an action.
+- [ConsoleWidget](docs/ai/components/ConsoleWidget.md): A high-performance rich console / terminal widget for desktop tools and logging.
+- [Container](docs/ai/components/Container.md): Centers content and limits its width, keeping long lines readable on wide screens.
+- [DangerButton](docs/ai/components/DangerButton.md): A destructive action, such as deleting data.
+- [DataTable](docs/ai/components/DataTable.md): A table with sorting, filtering, paging, selection, column control and export.
+- [DataTableModel](docs/ai/components/DataTableModel.md): Serves rows after filter, sort and page.
+- [DatePicker](docs/ai/components/DatePicker.md): A date field with a popup calendar.
+- [Divider](docs/ai/components/Divider.md): A separator line, optionally with centered text.
+- [Drawer](docs/ai/components/Drawer.md): A panel that slides in from the edge of a window.
+- [DropdownMenu](docs/ai/components/DropdownMenu.md): A button that opens a Menu.
+- [EmptyState](docs/ai/components/EmptyState.md): Explains why a view is empty and what to do next.
+- [FieldLabel](docs/ai/components/FieldLabel.md): The label of a FormField.
+- [FieldMessage](docs/ai/components/FieldMessage.md): Helper or validation text under a field.
+- [FilePicker](docs/ai/components/FilePicker.md): A path field with a browse button and drag and drop.
+- [FileTree](docs/ai/components/FileTree.md): A lazily loaded file system tree, using QFileSystemModel.
+- [FloatingTooltip](docs/ai/components/FloatingTooltip.md): The window drawn by Tooltip.
+- [FluentWindow](docs/ai/components/FluentWindow.md): A frameless base window styled with Fluent Blue design language.
+- [FormField](docs/ai/components/FormField.md): Label, control, helper text and error message as one unit.
+- [GhostButton](docs/ai/components/GhostButton.md): A low-emphasis action for toolbars and dense layouts.
+- [Grid](docs/ai/components/Grid.md): A grid with a fixed column count, or responsive columns from a minimum width.
+- [IconButton](docs/ai/components/IconButton.md): A square icon-only button.
+- [ImageViewer](docs/ai/components/ImageViewer.md): An image viewer with zoom, pan, rotate and fit.
+- [Input](docs/ai/components/Input.md): A text input with icons, a clear button and validation state.
+- [InputGroup](docs/ai/components/InputGroup.md): Joins an input with text or widget addons inside a single border.
+- [ListItem](docs/ai/components/ListItem.md): One row of a list.
+- [LoadingButton](docs/ai/components/LoadingButton.md): A primary button with start() and stop() shortcuts for async work.
+- [LoadingOverlay](docs/ai/components/LoadingOverlay.md): Blocks a widget and shows a spinner while it is busy.
+- [LogViewer](docs/ai/components/LogViewer.md): A live log view with level filtering, search and tailing.
+- [Menu](docs/ai/components/Menu.md): A popup menu.
+- [MenuItem](docs/ai/components/MenuItem.md): A menu entry.
+- [MessageDialog](docs/ai/components/MessageDialog.md): A modal with a status icon, a message and buttons.
+- [Modal](docs/ai/components/Modal.md): A themed modal dialog over a dimmed parent window.
+- [MultiSelect](docs/ai/components/MultiSelect.md): Choose any number of values from a checkable popup list.
+- [NavigationBar](docs/ai/components/NavigationBar.md): A horizontal application bar with title, start, center and end regions.
+- [Notification](docs/ai/components/Notification.md): A richer message with a title and an action, which stays until dismissed by default.
+- [NumberInput](docs/ai/components/NumberInput.md): A numeric input with bounds, steppers and arrow key support.
+- [OtpInput](docs/ai/components/OtpInput.md): A multi-slot numeric OTP / 2FA code entry widget with auto-focus and paste support.
+- [OutlineButton](docs/ai/components/OutlineButton.md): A brand-tinted action with less weight than PrimaryButton.
+- [Pagination](docs/ai/components/Pagination.md): Page navigation with ellipsis and optional range text.
+- [Panel](docs/ai/components/Panel.md): A titled section with a header action area.
+- [PasswordInput](docs/ai/components/PasswordInput.md): A masked input with a visibility toggle.
+- [Popover](docs/ai/components/Popover.md): A floating panel anchored to a widget. It closes on outside click or Escape.
+- [PrimaryButton](docs/ai/components/PrimaryButton.md): The single most important action in a view.
+- [ProgressBar](docs/ai/components/ProgressBar.md): A horizontal progress bar.
+- [ProgressDialog](docs/ai/components/ProgressDialog.md): A modal that reports the progress of a long operation.
+- [RadioButton](docs/ai/components/RadioButton.md): A radio button. Use RadioGroup for the common case.
+- [RadioGroup](docs/ai/components/RadioGroup.md): A set of mutually exclusive radio buttons.
+- [Result](docs/ai/components/Result.md): The outcome of an operation.
+- [RichTextArea](docs/ai/components/RichTextArea.md): The editing surface of RichTextEditor.
+- [RichTextEditor](docs/ai/components/RichTextEditor.md): A rich text editor with a formatting toolbar.
+- [ScrollArea](docs/ai/components/ScrollArea.md): A frameless scroll area with themed scrollbars and a resizable content widget.
+- [SearchInput](docs/ai/components/SearchInput.md): A clearable search field that debounces typing.
+- [SecondaryButton](docs/ai/components/SecondaryButton.md): A standard action. This is the default look of Button.
+- [SegmentedControl](docs/ai/components/SegmentedControl.md): A compact, mutually exclusive option strip.
+- [Select](docs/ai/components/Select.md): Choose one value from a list.
+- [Sidebar](docs/ai/components/Sidebar.md): A vertical, sectioned, collapsible navigation rail.
+- [SidebarItem](docs/ai/components/SidebarItem.md): One navigation entry.
+- [Skeleton](docs/ai/components/Skeleton.md): A placeholder with a soft shimmer while content loads. The timer stops while hidden.
+- [Slider](docs/ai/components/Slider.md): A value slider.
+- [Snackbar](docs/ai/components/Snackbar.md): A single-line message at the bottom center, often offering an undo.
+- [SpinBox](docs/ai/components/SpinBox.md): An integer input with stepper buttons.
+- [SplitButton](docs/ai/components/SplitButton.md): Primary action on the left, a menu of related actions on the right.
+- [Splitter](docs/ai/components/Splitter.md): A resizable split view.
+- [Stack](docs/ai/components/Stack.md): Arranges children in a row or column with token spacing.
+- [StatisticCard](docs/ai/components/StatisticCard.md): A headline metric with trend.
+- [Stepper](docs/ai/components/Stepper.md): Shows progress through ordered steps. Arrow keys move when clickable.
+- [Switch](docs/ai/components/Switch.md): An animated on/off toggle.
+- [SyntaxHighlighter](docs/ai/components/SyntaxHighlighter.md): Regex-based highlighter whose colors come from theme roles.
+- [TabBar](docs/ai/components/TabBar.md): A standalone tab strip with an underline indicator.
+- [Tabs](docs/ai/components/Tabs.md): Tabbed pages built on QTabWidget, using TabBar.
+- [Tag](docs/ai/components/Tag.md): A compact label for categories, optionally closable.
+- [TagInput](docs/ai/components/TagInput.md): An input field that converts typed text into removable tags on Enter or comma.
+- [Text](docs/ai/components/Text.md): A label bound to a typography role and a text color role.
+- [TextArea](docs/ai/components/TextArea.md): A multi-line plain text input.
+- [TextButton](docs/ai/components/TextButton.md): A link-like action, typically inline with content.
+- [TimePicker](docs/ai/components/TimePicker.md): A time field with hour and minute columns.
+- [TimePopup](docs/ai/components/TimePopup.md): Hour and minute columns used by TimePicker.
+- [Timeline](docs/ai/components/Timeline.md): A vertical sequence of events.
+- [TitleBar](docs/ai/components/TitleBar.md): Custom titlebar with native-like window management buttons, draggable area, and branding.
+- [Toast](docs/ai/components/Toast.md): A brief, auto-dismissing message in the window's top right corner.
+- [ToastCard](docs/ai/components/ToastCard.md): The card behind Toast, Notification and Snackbar.
+- [Tooltip](docs/ai/components/Tooltip.md): Attach a rich, delayed tooltip to a widget. It also appears on keyboard focus.
+- [TreeView](docs/ai/components/TreeView.md): A tree from nested dicts, with built-in filtering.
+- [Wizard](docs/ai/components/Wizard.md): A multi-step flow with a stepper, validation and navigation.
