@@ -81,3 +81,6 @@ dmypy.json
 *.log
 logs/
 prompt.md
+
+site/
+.scratch/

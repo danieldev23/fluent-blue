@@ -65,6 +65,7 @@ def ask():
     dialog = ConfirmDialog(demo, title="Delete this project?", message="All its data is removed. This cannot be undone.",
                            confirm_text="Delete project", danger=True)
     dialog.confirmed.connect(lambda: Toast.show("Project deleted", parent=demo, variant="success"))
+    dialog.finished.connect(dialog.deleteLater)
     dialog.open()
 
 demo.clicked.connect(ask)
@@ -80,6 +81,8 @@ demo.clicked.connect(ask)
 - Style through props and design tokens. Do not call `setStyleSheet` on components, and do not hardcode colors, spacing, radii or fonts.
 - Read theme values with `ThemeManager.color("role")`, `.qcolor("role")`, `.spacing(step)`, `.radius("md")` and `.font("role")`. For custom painting, read them inside `paintEvent`.
 - Subclass with `ThemedMixin`, call `self.bind_theme()`, and rebuild cached pixmaps in `refresh_theme()`, so that runtime theme switches work.
+- Never connect a lambda or closure that captures a widget to `ThemeManager` signals: it outlives the widget, and PyQt aborts when it fires. Use `ThemedMixin` or a bound method.
+- Keep theme switches fast: do not rebuild child widgets in `refresh_theme()`, and free one-shot menus and dialogs with `WA_DeleteOnClose` or `finished.connect(dialog.deleteLater)`.
 - Use icon names from `icon_names()`, or add one with `register_icon`. Icon-only controls need a `tooltip`, which also becomes the accessible name.
 - Text needs at least 4.5:1 contrast. Keep keyboard access and visible focus.
 - Fluent Blue signals and methods use `snake_case`. Inherited Qt API stays `camelCase`.

@@ -8,42 +8,42 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 PRIMARY_RAMP: dict[str, str] = {
-    "50": "#E6F4FF",   # Ant Design blue-1
-    "100": "#BAE0FF",  # Ant Design blue-2
-    "200": "#91CAFF",  # Ant Design blue-3
-    "300": "#69B1FF",  # Ant Design blue-4
-    "400": "#4096FF",  # Ant Design blue-5 (hover)
-    "500": "#1677FF",  # Ant Design blue-6 (primary base)
-    "600": "#0958D9",  # Ant Design blue-7 (active/pressed)
-    "700": "#003EB3",  # Ant Design blue-8
-    "800": "#002C8C",  # Ant Design blue-9
-    "900": "#001D66",  # Ant Design blue-10
+    "50": "#E6F4FF",
+    "100": "#BAE0FF",
+    "200": "#91CAFF",
+    "300": "#69B1FF",
+    "400": "#4096FF",
+    "500": "#1677FF",
+    "600": "#0958D9",
+    "700": "#003EB3",
+    "800": "#002C8C",
+    "900": "#001D66",
 }
 
 GRAY_RAMP: dict[str, str] = {
     "0": "#FFFFFF",
-    "50": "#FAFAFA",   # Ant Design colorFillAlter
-    "100": "#F5F5F5",  # Ant Design colorBgLayout
-    "200": "#F0F0F0",  # Ant Design colorBorderSecondary
-    "300": "#D9D9D9",  # Ant Design colorBorder
-    "400": "#BFBFBF",  # Ant Design colorTextDisabled
-    "500": "#8C8C8C",  # Ant Design colorTextDescription
-    "600": "#595959",  # Ant Design colorTextSecondary
-    "700": "#434343",  # Ant Design text dark
-    "800": "#262626",  # Ant Design text heading
-    "900": "#1F1F1F",  # Ant Design elevated container
-    "950": "#141414",  # Ant Design container base
+    "50": "#FAFAFA",
+    "100": "#F5F5F5",
+    "200": "#F0F0F0",
+    "300": "#D9D9D9",
+    "400": "#BFBFBF",
+    "500": "#8C8C8C",
+    "600": "#595959",
+    "700": "#434343",
+    "800": "#262626",
+    "900": "#1F1F1F",
+    "950": "#141414",
     "1000": "#000000", # Pure black
 }
 
 SEMANTIC_BASE: dict[str, str] = {
-    "success": "#52C41A",  # Ant Design Polar Green 6
-    "warning": "#FAAD14",  # Ant Design Calendula Gold 6
-    "error": "#FF4D4F",    # Ant Design Dust Red (colorError)
-    "info": "#1677FF",     # Ant Design Daybreak Blue 6
+    "success": "#52C41A",
+    "warning": "#FAAD14",
+    "error": "#FF4D4F",
+    "info": "#1677FF",
 }
 
-# The 12 Ant Design preset color palettes (10 shades each)
+# Twelve extended hue families, ten steps each, for charts and tags.
 ANT_PRESET_COLORS: dict[str, list[str]] = {
     "blue": ["#E6F4FF", "#BAE0FF", "#91CAFF", "#69B1FF", "#4096FF", "#1677FF", "#0958D9", "#003EB3", "#002C8C", "#001D66"],
     "purple": ["#F9F0FF", "#EFDBFF", "#D3ADF7", "#B37FEB", "#9254DE", "#722ED1", "#531DAB", "#391085", "#22075E", "#120338"],

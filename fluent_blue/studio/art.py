@@ -2,7 +2,18 @@
 from __future__ import annotations
 
 from ..compatibility.qt import (
-    QColor, QFrame, QLinearGradient, QPainter, QPainterPath, QPen, QPixmap, QPointF, QPolygonF, QRadialGradient, QRectF, Qt,
+    QColor,
+    QFrame,
+    QLinearGradient,
+    QPainter,
+    QPainterPath,
+    QPen,
+    QPixmap,
+    QPointF,
+    QPolygonF,
+    QRadialGradient,
+    QRectF,
+    Qt,
     QWidget,
 )
 from ..components.base import ThemedMixin, device_ratio

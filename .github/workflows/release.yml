@@ -1,0 +1,70 @@
+name: Release
+
+# Runs when a version tag is pushed, such as v0.1.0. It builds the package, checks it,
+# attaches it to a GitHub release, and publishes to PyPI only when the repository variable
+# PUBLISH_TO_PYPI is "true" and a "pypi" environment with trusted publishing exists.
+# Nothing is published without that explicit opt-in by the repository owner.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  QT_QPA_PLATFORM: offscreen
+
+jobs:
+  build:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1 libopengl0 libxkbcommon-x11-0 libfontconfig1 libdbus-1-3
+      - run: pip install -e ".[dev,pyqt6]"
+      - name: Tag matches the package version
+        run: |
+          version=$(python -c "import fluent_blue; print(fluent_blue.__version__)")
+          test "v$version" = "${GITHUB_REF_NAME}" || { echo "Tag ${GITHUB_REF_NAME} does not match version $version"; exit 1; }
+      - run: pytest -p no:cacheprovider
+      - run: python -m build
+      - run: twine check dist/*
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  github-release:
+    name: GitHub release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
+
+  pypi:
+    name: Publish to PyPI
+    needs: build
+    if: vars.PUBLISH_TO_PYPI == 'true'
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1

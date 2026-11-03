@@ -1,0 +1,124 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  QT_QPA_PLATFORM: offscreen
+  PYTHONUTF8: "1"
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install ruff
+      - run: ruff check .
+
+  test:
+    name: Test (${{ matrix.os }}, ${{ matrix.binding }}, py${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        binding: [PyQt6, PySide6]
+        python: ["3.13"]
+        include:
+          - { os: ubuntu-latest, binding: PyQt6, python: "3.11" }
+          - { os: ubuntu-latest, binding: PySide6, python: "3.11" }
+    env:
+      FLUENT_BLUE_QT_BINDING: ${{ matrix.binding }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install Qt runtime libraries
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1 libopengl0 libxkbcommon-x11-0 \
+            libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libxcb-shape0 libxcb-xinerama0 libdbus-1-3 libfontconfig1
+      - name: Install
+        run: pip install -e ".[dev]" "${{ matrix.binding }}"
+      - name: Report binding
+        run: python -c "import fluent_blue as f; print(f.BINDING, f.BINDING_VERSION, 'Qt', f.QT_VERSION)"
+      - name: Tests
+        run: pytest -p no:cacheprovider
+      - name: UI audit
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        run: python scripts/ui_audit.py --deep
+      - name: Performance report
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
+        run: python scripts/perf_report.py
+
+  generated-files:
+    name: Generated files are current
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1 libopengl0 libxkbcommon-x11-0 libfontconfig1 libdbus-1-3
+      - run: pip install -e ".[dev,pyqt6]"
+      - name: Regenerate briefs and docs
+        run: |
+          python -m fluent_blue.agent_prompts --export .
+          python scripts/generate_docs.py --markdown-only
+      - name: Fail if anything changed
+        run: git diff --exit-code -- AGENTS.md llms.txt docs
+
+  package:
+    name: Build and install package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libegl1 libgl1 libopengl0 libxkbcommon-x11-0 libfontconfig1 libdbus-1-3
+      - run: pip install build twine
+      - run: python -m build
+      - run: twine check dist/*
+      - name: Install the wheel into a clean environment
+        run: |
+          python -m venv /tmp/wheel-env
+          /tmp/wheel-env/bin/pip install dist/*.whl PyQt6
+          /tmp/wheel-env/bin/fluent-blue-studio --version
+          /tmp/wheel-env/bin/python -c "import fluent_blue, fluent_blue.studio.app; from fluent_blue.studio import catalog; print(len(catalog.entries()), 'catalog entries')"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  docs:
+    name: Documentation site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install mkdocs-material
+      - run: mkdocs build --strict
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site/

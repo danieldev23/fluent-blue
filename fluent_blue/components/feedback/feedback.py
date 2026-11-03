@@ -2,7 +2,19 @@
 from __future__ import annotations
 
 from ...compatibility.qt import (
-    QApplication, QEvent, QFrame, QHBoxLayout, QLabel, QPainter, QRectF, QSizePolicy, Qt, QTimer, QVBoxLayout, QWidget, Signal,
+    QApplication,
+    QEvent,
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QPainter,
+    QRectF,
+    QSizePolicy,
+    Qt,
+    QTimer,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...core.animations import animate, apply_elevation
 from ...core.theme_manager import ThemeManager
@@ -185,21 +197,47 @@ class _OverlayHost(QWidget):
     def __init__(self, window, anchor: str) -> None:
         super().__init__(window)
         self._window, self._anchor = window, anchor
+        self._cards: list = []
         layout = QVBoxLayout(self)
         layout.setContentsMargins(16, 16, 16, 16)
         layout.setSpacing(8)
         window.installEventFilter(self)
 
     def add(self, card) -> None:
+        self._cards.append(card)
         self.layout().addWidget(card)
-        card.closed.connect(self._relayout)
-        self.show()
-        self.raise_()
-        self._relayout()
+        card.closed.connect(lambda: self._forget(card))
+        # Show the card now: a widget added to a visible host is shown on the next event
+        # loop pass, and a hidden card does not count towards the host's size.
         card.show()
-        height = card.sizeHint().height()
-        animate(card, b"maximumHeight", height, start=0, duration="fast",
-                on_finished=lambda: card.setMaximumHeight(16777215))
+        self.show()
+        self._relayout()
+        height = self._card_height(card, self.width() - self._horizontal_margins())
+        animate(card, b"maximumHeight", height, start=0, duration="fast", on_finished=lambda: self._settle(card))
+
+    def _settle(self, card) -> None:
+        card.setMaximumHeight(16777215)
+        self._relayout()
+
+    def _forget(self, card) -> None:
+        if card in self._cards:
+            self._cards.remove(card)
+        self._relayout()
+
+    def _live_cards(self) -> list:
+        return [c for c in self._cards if c.isVisible()]
+
+    def _horizontal_margins(self) -> int:
+        margins = self.layout().contentsMargins()
+        return margins.left() + margins.right()
+
+    @staticmethod
+    def _card_height(card, width: int) -> int:
+        # Wrapped text needs the height for the width the card will get, not the hint.
+        layout = card.layout()
+        if layout is not None and layout.hasHeightForWidth():
+            return layout.totalHeightForWidth(width)
+        return card.sizeHint().height()
 
     def eventFilter(self, watched, event) -> bool:  # noqa: N802 - Qt override
         if event.type() == QEvent.Type.Resize:
@@ -207,12 +245,18 @@ class _OverlayHost(QWidget):
         return False
 
     def _relayout(self) -> None:
-        self.layout().activate()
-        size = self.sizeHint()
+        # Size from the cards' hints, not the layout: a card animating its maximum height
+        # would otherwise shrink the host and clip its neighbours.
+        margins = self.layout().contentsMargins()
+        cards = self._live_cards()
+        card_width = max([min(c.sizeHint().width(), c.maximumWidth()) for c in cards] + [0])
+        width = card_width + margins.left() + margins.right()
+        height = sum(self._card_height(c, card_width) for c in cards) + self.layout().spacing() * max(0, len(cards) - 1)
+        height += margins.top() + margins.bottom()
         if self._anchor == "top-right":
-            self.setGeometry(self._window.width() - size.width(), 0, size.width(), size.height())
+            self.setGeometry(self._window.width() - width, 0, width, height)
         else:
-            self.setGeometry((self._window.width() - size.width()) // 2, self._window.height() - size.height(), size.width(), size.height())
+            self.setGeometry((self._window.width() - width) // 2, self._window.height() - height, width, height)
         self.raise_()
 
 

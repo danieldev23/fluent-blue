@@ -5,7 +5,6 @@ from ...compatibility.qt import (
     QHBoxLayout,
     QKeyEvent,
     QLineEdit,
-    QSize,
     Qt,
     QToolButton,
     QWidget,
@@ -14,7 +13,7 @@ from ...compatibility.qt import (
 from ...core.theme_manager import ThemeManager
 from ...icons import icon as make_icon
 from ..base import ThemedMixin, apply_common, check_choice, set_style_prop
-from .input import Input, SIZES, VALIDATION_STATES
+from .input import SIZES, VALIDATION_STATES, Input
 
 
 class _SingleOtpDigit(Input):

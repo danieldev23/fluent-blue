@@ -5,7 +5,7 @@ import colorsys
 import re
 from functools import lru_cache
 
-from .tokens import ANT_PRESET_COLORS, GRAY_RAMP, PRIMARY_RAMP, SEMANTIC_BASE
+from .tokens import ANT_PRESET_COLORS, GRAY_RAMP, PRIMARY_RAMP
 
 _HEX = re.compile(r"^#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$")
 
@@ -57,7 +57,7 @@ def readable_on(background: str, light: str = "#FFFFFF", dark: str = "#141414") 
 
 
 def derive_ramp(base: str) -> dict[str, str]:
-    """Build a 10-step ramp around ``base`` using Ant Design's color generation algorithm."""
+    """Build a 10-step ramp around ``base`` with a lightness and saturation curve tuned for UI surfaces."""
     base_hex = base.lstrip("#")
     r, g, b = [int(base_hex[i:i+2], 16) / 255.0 for i in (0, 2, 4)]
     h, s, v = colorsys.rgb_to_hsv(r, g, b)
@@ -175,7 +175,7 @@ _ACCESSIBLE_HIGH_CONTRAST = {
 
 
 def light_colors() -> dict[str, str]:
-    """Semantic roles of the Fluent Blue Light theme, aligned with Ant Design 5."""
+    """Semantic roles of the Fluent Blue Light theme."""
     c = _base_roles()
     c.update({
         "background": "#F5F5F5", "surface": "#FFFFFF", "surface-secondary": "#FAFAFA",
@@ -215,7 +215,7 @@ def light_colors() -> dict[str, str]:
 
 
 def dark_colors() -> dict[str, str]:
-    """Semantic roles of the Fluent Blue Dark theme, aligned with Ant Design 5 Dark Algorithm."""
+    """Semantic roles of the Fluent Blue Dark theme."""
     c = _base_roles()
     c.update({
         "background": "#000000", "surface": "#141414", "surface-secondary": "#1F1F1F",

@@ -2,9 +2,28 @@
 from __future__ import annotations
 
 from ...compatibility.qt import (
-    QFileIconProvider, QFileSystemModel, QFrame, QGraphicsPixmapItem, QGraphicsScene, QGraphicsView, QHBoxLayout, QPainter,
-    QPen, QPixmap, QRectF, QSize, QSizePolicy, QSortFilterProxyModel, QStackedWidget, QStandardItem, QStandardItemModel,
-    Qt, QTreeView, QVBoxLayout, QWidget, Signal,
+    QFileIconProvider,
+    QFileSystemModel,
+    QFrame,
+    QGraphicsPixmapItem,
+    QGraphicsScene,
+    QGraphicsView,
+    QHBoxLayout,
+    QPainter,
+    QPen,
+    QPixmap,
+    QRectF,
+    QSize,
+    QSizePolicy,
+    QSortFilterProxyModel,
+    QStackedWidget,
+    QStandardItem,
+    QStandardItemModel,
+    Qt,
+    QTreeView,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...core.theme_manager import ThemeManager
 from ...icons import icon as make_icon

@@ -1,19 +1,99 @@
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
 
 [project]
 name = "fluent-blue"
-version = "0.1.0"
-description = "Modern Ant Design-styled design system for PyQt6 and PySide6"
-readme = "CHANGELOG.md"
-authors = [{ name = "Danieldev" }]
-license = { text = "MIT" }
-requires-python = ">=3.9"
-dependencies = [
-    "PyQt6>=6.5.0",
+dynamic = ["version"]
+description = "A modern, token-driven design system and component library for PyQt6 and PySide6 desktop applications."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "Fluent Blue contributors" }]
+keywords = ["pyqt6", "pyside6", "qt", "design-system", "ui", "components", "theme", "desktop"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications :: Qt",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: MacOS X",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: User Interfaces",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+# A Qt binding is an extra, so that one install cannot pull in both.
+dependencies = []
+
+[project.optional-dependencies]
+pyqt6 = ["PyQt6>=6.5"]
+pyside6 = ["PySide6>=6.5"]
+dev = [
+    "pytest>=8.0",
+    "pytest-qt>=4.4",
+    "ruff>=0.6",
+    "build>=1.2",
+    "twine>=5.0",
+    "mkdocs-material>=9.5",
 ]
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["fluent_blue*"]
+[project.scripts]
+fluent-blue-studio = "fluent_blue.studio.app:main"
+
+[project.urls]
+Homepage = "https://github.com/your-github-user/fluent-blue"
+Documentation = "https://your-github-user.github.io/fluent-blue/"
+Changelog = "https://github.com/your-github-user/fluent-blue/blob/main/CHANGELOG.md"
+Issues = "https://github.com/your-github-user/fluent-blue/issues"
+
+[tool.hatch.version]
+path = "fluent_blue/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["fluent_blue"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "fluent_blue",
+    "tests",
+    "examples",
+    "scripts",
+    "docs",
+    "mkdocs.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "AGENTS.md",
+    "llms.txt",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["error::DeprecationWarning:fluent_blue.*"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+extend-exclude = ["docs", "site", ".venv*"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = [
+    "E501",   # Long lines are mostly data: stylesheet rules, catalog snippets and icon paths.
+    "B008",   # Qt APIs take default QModelIndex() arguments.
+    "B905",   # zip(strict=) adds noise for equal-length pairs built in place.
+    "UP007",  # Keep `Optional` style unions where Qt stubs use them.
+]
+
+[tool.ruff.lint.per-file-ignores]
+"fluent_blue/__init__.py" = ["F401", "F403", "F405"]
+"fluent_blue/components/__init__.py" = ["F403"]
+"fluent_blue/compatibility/qt.py" = ["F401"]
+"tests/*" = ["B011", "B017"]

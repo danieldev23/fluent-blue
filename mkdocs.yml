@@ -1,0 +1,78 @@
+site_name: Fluent Blue
+site_description: A modern, token-driven design system for PyQt6 and PySide6.
+site_url: https://your-github-user.github.io/fluent-blue/
+repo_url: https://github.com/your-github-user/fluent-blue
+repo_name: fluent-blue
+edit_uri: edit/main/docs/
+copyright: MIT License. Fluent Blue is an independent project.
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      base_path: [".", "docs"]
+      check_paths: true
+
+nav:
+  - Home: index.md
+  - Getting started:
+      - Installation: installation.md
+      - Quick start and tutorial: getting-started.md
+      - Examples: examples.md
+  - Design:
+      - Principles: design-principles.md
+      - Design tokens: tokens.md
+      - Theming: theming.md
+  - Components:
+      - Overview: components/index.md
+      - Buttons: components/buttons.md
+      - Inputs: components/inputs.md
+      - Selection: components/selection.md
+      - Navigation: components/navigation.md
+      - Data Display: components/data-display.md
+      - Data Tables: components/data-tables.md
+      - Feedback: components/feedback.md
+      - Layout: components/layout.md
+      - Advanced Components: components/advanced-components.md
+  - API reference: api-reference.md
+  - AI coding agents: ai-agents.md
+  - Help:
+      - FAQ: faq.md
+      - Troubleshooting: troubleshooting.md
+      - Migration guide: migration.md
+  - Contributing: contributing.md
+  - Changelog: changelog.md

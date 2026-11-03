@@ -4,8 +4,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from ...compatibility.qt import (
-    QDialog, QEvent, QFrame, QLabel, QLineEdit, QListWidget, QListWidgetItem, QShortcut, Qt, QKeySequence, QSize,
-    QVBoxLayout, Signal,
+    QDialog,
+    QEvent,
+    QFrame,
+    QKeySequence,
+    QLabel,
+    QLineEdit,
+    QListWidget,
+    QListWidgetItem,
+    QShortcut,
+    QSize,
+    Qt,
+    QVBoxLayout,
+    Signal,
 )
 from ...core.animations import apply_elevation
 from ...icons import icon as make_icon

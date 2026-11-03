@@ -2,11 +2,34 @@
 from __future__ import annotations
 
 from ... import (
-    Button, Card, Column, DataTable, Grid, ScrollArea, SearchInput, SegmentedControl, Text, ThemeManager, Toast, icon, icon_names,
+    Button,
+    Card,
+    Column,
+    DataTable,
+    Grid,
+    ScrollArea,
+    SearchInput,
+    SegmentedControl,
+    Text,
+    ThemeManager,
+    Toast,
+    icon,
+    icon_names,
 )
 from ...compatibility.qt import (
-    QApplication, QHBoxLayout, QListView, QListWidget, QListWidgetItem, QPainter, QPropertyAnimation, QRect, QRectF, QSize, Qt,
-    QVBoxLayout, QWidget,
+    QApplication,
+    QHBoxLayout,
+    QListView,
+    QListWidget,
+    QListWidgetItem,
+    QPainter,
+    QPropertyAnimation,
+    QRect,
+    QRectF,
+    QSize,
+    Qt,
+    QVBoxLayout,
+    QWidget,
 )
 from ...components.base import ThemedMixin
 from ...core.palette import contrast_ratio, readable_on
@@ -90,7 +113,6 @@ class _ContrastTable(ThemedMixin, DataTable):
 
 def colors_page() -> QWidget:
     shell, layout = page("Colors", "Primitive ramps and semantic roles of the active theme. Click any color to copy it.")
-    tokens = ThemeManager.theme().colors
     primary = Card(title="Primary")
     _ramp(primary, [(f"primary-{k}", k) for k in ("50", "100", "200", "300", "400", "500", "600", "700", "800", "900")])
     layout.addWidget(primary)
@@ -109,7 +131,7 @@ def colors_page() -> QWidget:
         _ramp(card, [(r, r) for r in roles])
         layout.addWidget(card)
 
-    ant_card = Card(title="Ant Design Presets", subtitle="The 12 standard Ant Design color families (10 shades each).")
+    ant_card = Card(title="Extended hues", subtitle="Twelve additional hue families with ten steps each, for charts, tags and data visualisation.")
     for name in ("blue", "green", "gold", "red", "volcano", "orange", "yellow", "lime", "cyan", "geekblue", "purple", "magenta"):
         _ramp(ant_card, [(f"{name}-{k}", str(k)) for k in range(1, 11)])
     layout.addWidget(ant_card)

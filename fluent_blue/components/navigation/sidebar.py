@@ -2,8 +2,20 @@
 from __future__ import annotations
 
 from ...compatibility.qt import (
-    QButtonGroup, QFrame, QHBoxLayout, QLabel, QPainter, QPushButton, QRectF, QScrollArea, QSize, QSizePolicy,
-    Qt, QVBoxLayout, QWidget, Signal,
+    QButtonGroup,
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QPainter,
+    QPushButton,
+    QRectF,
+    QScrollArea,
+    QSize,
+    QSizePolicy,
+    Qt,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...core.animations import animate
 from ...core.theme_manager import ThemeManager

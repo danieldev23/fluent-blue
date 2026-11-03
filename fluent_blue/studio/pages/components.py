@@ -2,8 +2,8 @@
 from __future__ import annotations
 
 from ... import Badge, Button, Card, CodeEditor, Column, DataTable, IconButton, ScrollArea, Tabs, Text, Toast
-from ...compatibility.qt import QApplication, QHBoxLayout, QSizePolicy, Qt, QTimer, QVBoxLayout, QWidget
 from ...agent_prompts import component_prompt
+from ...compatibility.qt import QApplication, QHBoxLayout, QSizePolicy, QTimer, QVBoxLayout, QWidget
 from .. import catalog, introspect
 
 _NATIVE_SIGNALS = ("clicked", "toggled", "valueChanged", "textChanged", "returnPressed", "currentChanged")

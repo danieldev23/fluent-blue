@@ -7,9 +7,27 @@ import re
 from collections import deque
 
 from ...compatibility.qt import (
-    QFont, QFrame, QHBoxLayout, QInputDialog, QKeySequence, QPainter, QPlainTextEdit, QRect, QShortcut, QSize,
-    QSyntaxHighlighter, QTextBlockFormat, QTextCharFormat, QTextCursor, QTextEdit, QTextFormat, QTextListFormat,
-    Qt, QVBoxLayout, QWidget, Signal,
+    QFont,
+    QFrame,
+    QHBoxLayout,
+    QInputDialog,
+    QKeySequence,
+    QPainter,
+    QPlainTextEdit,
+    QRect,
+    QShortcut,
+    QSize,
+    QSyntaxHighlighter,
+    Qt,
+    QTextBlockFormat,
+    QTextCharFormat,
+    QTextCursor,
+    QTextEdit,
+    QTextFormat,
+    QTextListFormat,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...core.theme_manager import ThemeManager
 from ..base import ThemedMixin, check_choice

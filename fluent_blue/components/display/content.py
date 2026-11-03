@@ -2,8 +2,21 @@
 from __future__ import annotations
 
 from ...compatibility.qt import (
-    QEvent, QFrame, QHBoxLayout, QLabel, QObject, QPainter, QPen, QPoint, QPointF, QRectF, Qt, QTimer,
-    QVBoxLayout, QWidget, Signal,
+    QEvent,
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QObject,
+    QPainter,
+    QPen,
+    QPoint,
+    QPointF,
+    QRectF,
+    Qt,
+    QTimer,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...core.theme_manager import ThemeManager
 from ...icons import icon_pixmap
@@ -63,36 +76,45 @@ class EmptyState(QWidget):
         layout = QVBoxLayout(self)
         layout.setContentsMargins(24, 24, 24, 24)
         layout.setSpacing(8)
-        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.addWidget(_Emblem(icon, self._TONE), 0, Qt.AlignmentFlag.AlignHCenter)
+        layout.addStretch(1)
+        self.emblem = _Emblem(icon, self._TONE)
+        layout.addWidget(self.emblem, 0, Qt.AlignmentFlag.AlignHCenter)
         layout.addSpacing(8)
-        self.title_label = Text(title, style="heading-4")
+        self.title_label = Text(title, style="heading-4", wrap=True)
         self.title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.addWidget(self.title_label)
+        layout.addWidget(self.title_label, 0, Qt.AlignmentFlag.AlignHCenter)
         self.description_label = Text(description, style="body-medium", color="text-secondary", wrap=True)
         self.description_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.description_label.setVisible(bool(description))
-        layout.addWidget(self.description_label)
+        layout.addWidget(self.description_label, 0, Qt.AlignmentFlag.AlignHCenter)
         self.actions = QHBoxLayout()
         self.actions.setSpacing(8)
         self.actions.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addSpacing(8)
         layout.addLayout(self.actions)
+        layout.addStretch(1)
         self.action_button = None
         if action_text:
             self.action_button = Button(action_text, variant="primary")
             self.action_button.clicked.connect(lambda: self.action_clicked.emit())
             self.actions.addWidget(self.action_button)
 
+    @staticmethod
+    def _fit_label(label, width: int) -> None:
+        # Wrapped text in a centered column confuses height-for-width, so the labels get an
+        # explicit size. The layout's hint is then exact, and nothing can overlap.
+        natural = label.fontMetrics().horizontalAdvance(label.text()) + 4
+        fitted = min(width, natural)
+        label.setFixedWidth(fitted)
+        label.setFixedHeight(label.heightForWidth(fitted))
+
     def resizeEvent(self, event) -> None:  # noqa: N802 - Qt override
         super().resizeEvent(event)
-        # Limit the text width with margins, not alignment: Qt computes height-for-width from
-        # the full column, so a centered narrow label would overflow and overlap the emblem.
-        side = max(24, (self.width() - 380) // 2)
-        margins = self.layout().contentsMargins()
-        if margins.left() != side:
-            self.layout().setContentsMargins(side, margins.top(), side, margins.bottom())
-        needed = self.layout().totalHeightForWidth(self.width())
+        width = min(380, max(120, self.width() - 48))
+        self._fit_label(self.title_label, width)
+        if self.description_label.text():
+            self._fit_label(self.description_label, width)
+        needed = self.layout().sizeHint().height()
         if needed != self.minimumHeight():
             self.setMinimumHeight(needed)
 

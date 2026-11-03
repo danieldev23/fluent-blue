@@ -59,6 +59,7 @@ def show():
     modal.body.addWidget(FormField("Name", Input("Fluent Blue")))
     modal.add_action(Button("Cancel")).clicked.connect(modal.reject)
     modal.add_action(Button("Rename", variant="primary")).clicked.connect(modal.accept)
+    modal.finished.connect(modal.deleteLater)
     modal.open()
 
 demo.clicked.connect(show)

@@ -3,9 +3,16 @@ import sys
 
 import pytest
 
-from fluent_blue import Button, Tabs, ThemeManager
+from fluent_blue import Tabs, ThemeManager
 from fluent_blue.compatibility.qt import (
-    QAbstractButton, QApplication, QFileDialog, QInputDialog, QLineEdit, QMenu, Qt, QWidget,
+    QAbstractButton,
+    QApplication,
+    QFileDialog,
+    QInputDialog,
+    QLineEdit,
+    Qt,
+    QWidget,
+    delete_now,
 )
 from fluent_blue.studio import catalog
 from fluent_blue.studio.app import StudioWindow
@@ -26,7 +33,6 @@ def window(qtbot, monkeypatch):
     errors = []
     previous, sys.excepthook = sys.excepthook, lambda kind, value, tb: errors.append(f"{kind.__name__}: {value}")
     win = StudioWindow()
-    qtbot.addWidget(win)
     win.resize(1536, 1024)
     win.show()
     qtbot.waitExposed(win)
@@ -37,6 +43,9 @@ def window(qtbot, monkeypatch):
     for widget in QApplication.topLevelWidgets():
         if widget is not win and widget.isVisible():
             widget.close()
+    win.close()
+    delete_now(win)
+    QApplication.processEvents()
     assert errors == []
 
 
@@ -139,3 +148,32 @@ def test_theme_switch_is_fast_with_many_pages_visited(window, qapp):
     assert len(window.findChildren(QWidget)) < 4000
 
 
+
+
+def test_repeated_dialogs_and_menus_do_not_accumulate(window, qapp):
+    from fluent_blue import Button, Modal
+
+    host = Button("Open", window)
+    def live_modals():
+        return len(window.findChildren(Modal))
+
+    for _ in range(5):
+        modal = Modal(host, title="T", content="Body")
+        modal.finished.connect(modal.deleteLater)
+        modal.show()
+        qapp.processEvents()
+        modal.reject()
+        qapp.processEvents()
+        QApplication.sendPostedEvents(None, 52)  # QEvent.DeferredDelete
+    assert live_modals() == 0
+
+
+def test_table_keeps_given_row_order_until_sorted(qtbot):
+    from fluent_blue import DataTable
+
+    rows = [{"id": n} for n in (2, 3, 1)]
+    table = DataTable(["id"], rows, page_size=None)
+    qtbot.addWidget(table)
+    assert [table.model.index(i, 0).data() for i in range(3)] == ["2", "3", "1"]
+    table.sort_by("id")
+    assert [table.model.index(i, 0).data() for i in range(3)] == ["1", "2", "3"]

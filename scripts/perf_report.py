@@ -12,7 +12,7 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 started = time.perf_counter()
-from fluent_blue import Toast, ThemeManager  # noqa: E402
+from fluent_blue import ThemeManager, Toast  # noqa: E402
 from fluent_blue.compatibility.qt import BINDING, QApplication, QWidget  # noqa: E402
 from fluent_blue.studio.app import StudioWindow  # noqa: E402
 

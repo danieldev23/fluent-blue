@@ -1,14 +1,11 @@
 """Interactive colored terminal and log viewer widget for tools, bots, and debug consoles."""
 from __future__ import annotations
 
-import re
 import time
+
 from ...compatibility.qt import (
-    QAction,
-    QColor,
     QHBoxLayout,
     QPlainTextEdit,
-    QSize,
     QTextCharFormat,
     QTextCursor,
     QToolButton,

@@ -2,7 +2,16 @@
 from __future__ import annotations
 
 from ...compatibility.qt import (
-    QComboBox, QCompleter, QListView, QListWidget, QListWidgetItem, QPainter, QPushButton, QSize, Qt, Signal,
+    QComboBox,
+    QCompleter,
+    QListView,
+    QListWidget,
+    QListWidgetItem,
+    QPainter,
+    QPushButton,
+    QSize,
+    Qt,
+    Signal,
 )
 from ...icons import icon_pixmap
 from ..base import ThemedMixin, apply_common, check_choice, normalize_options, set_style_prop

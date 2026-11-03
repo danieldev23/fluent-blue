@@ -5,8 +5,26 @@ import traceback
 from importlib import resources
 
 from ... import (
-    BINDING, BINDING_VERSION, QT_VERSION, Alert, Badge, Button, Card, CodeEditor, ColorPicker, Grid, PrimaryButton, ScrollArea, Select,
-    Splitter, Stack, Text, ThemeManager, Toast, __version__, icon_names,
+    BINDING,
+    BINDING_VERSION,
+    QT_VERSION,
+    Alert,
+    Badge,
+    Button,
+    Card,
+    CodeEditor,
+    ColorPicker,
+    Grid,
+    PrimaryButton,
+    ScrollArea,
+    Select,
+    Splitter,
+    Stack,
+    Text,
+    ThemeManager,
+    Toast,
+    __version__,
+    icon_names,
 )
 from ...compatibility.qt import QHBoxLayout, QTextBrowser, QVBoxLayout, QWidget
 from ...core.palette import contrast_ratio

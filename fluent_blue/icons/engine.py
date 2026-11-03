@@ -9,7 +9,16 @@ from functools import lru_cache
 from pathlib import Path
 
 from ..compatibility.qt import (
-    QApplication, QByteArray, QIcon, QImage, QPainter, QPixmap, QRectF, QSize, QSvgRenderer, Qt,
+    QApplication,
+    QByteArray,
+    QIcon,
+    QImage,
+    QPainter,
+    QPixmap,
+    QRectF,
+    QSize,
+    QSvgRenderer,
+    Qt,
 )
 from ..core.theme_manager import ThemeManager
 from .library import ICONS

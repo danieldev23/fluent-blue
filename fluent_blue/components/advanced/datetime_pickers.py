@@ -5,7 +5,15 @@ import calendar as _calendar
 import datetime as dt
 
 from ...compatibility.qt import (
-    QHBoxLayout, QListWidget, QPainter, QRectF, QSize, Qt, QVBoxLayout, QWidget, Signal,
+    QHBoxLayout,
+    QListWidget,
+    QPainter,
+    QRectF,
+    QSize,
+    Qt,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...core.theme_manager import ThemeManager
 from ..base import ThemedMixin

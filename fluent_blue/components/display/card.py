@@ -1,7 +1,20 @@
 """Card and StatisticCard."""
 from __future__ import annotations
 
-from ...compatibility.qt import QFrame, QHBoxLayout, QLabel, QPainter, QPainterPath, QPen, QPointF, QSizePolicy, Qt, QVBoxLayout, QWidget, Signal
+from ...compatibility.qt import (
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QPainter,
+    QPainterPath,
+    QPen,
+    QPointF,
+    QSizePolicy,
+    Qt,
+    QVBoxLayout,
+    QWidget,
+    Signal,
+)
 from ...core.animations import apply_elevation
 from ...core.theme_manager import ThemeManager
 from ...icons import icon_pixmap

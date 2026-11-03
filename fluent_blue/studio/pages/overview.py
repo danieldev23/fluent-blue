@@ -2,17 +2,58 @@
 from __future__ import annotations
 
 from ... import (
-    Alert, Avatar, Badge, Breadcrumb, Button, Card, Checkbox, CircularProgress, ComboBox, ConfirmDialog, DropdownMenu, GhostButton,
-    IconButton, Input, ListItem, Popover, PrimaryButton, ProgressBar, RadioButton, RadioGroup, ScrollArea, SearchInput,
-    SegmentedControl, Select, Sidebar, Slider, Switch, Tabs, Text, TextButton, ThemeManager, Toast, ToastCard,
+    Alert,
+    Avatar,
+    Breadcrumb,
+    Button,
+    Card,
+    Checkbox,
+    CircularProgress,
+    ComboBox,
+    ConfirmDialog,
+    DropdownMenu,
+    IconButton,
+    Input,
+    ListItem,
+    Popover,
+    PrimaryButton,
+    ProgressBar,
+    RadioButton,
+    RadioGroup,
+    ScrollArea,
+    SearchInput,
+    SegmentedControl,
+    Select,
+    Sidebar,
+    Slider,
+    Switch,
+    Tabs,
+    Text,
+    TextButton,
+    ThemeManager,
+    Toast,
+    ToastCard,
 )
 from ...compatibility.qt import (
-    QApplication, QButtonGroup, QFrame, QHBoxLayout, QLabel, QLinearGradient, QListWidget, QListWidgetItem, QPainter, QPen, QRectF,
-    QSize, Qt, QTimer, QVBoxLayout, QWidget, Signal,
+    QApplication,
+    QButtonGroup,
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QLinearGradient,
+    QListWidget,
+    QListWidgetItem,
+    QPainter,
+    QPen,
+    QRectF,
+    QSize,
+    Qt,
+    QTimer,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...components.base import ThemedMixin
-from ...core.animations import apply_elevation
-from ...icons import icon as make_icon
 from ...icons import icon_pixmap
 from ..art import HeroCard, LandscapeArt, draw_waves
 
@@ -327,7 +368,7 @@ class OverviewPage(QWidget):
             layout.setSpacing(0)
             layout.addWidget(Text(f"Level {level}", style="heading-6"))
             layout.addWidget(Text(name, style="caption", color="text-tertiary"))
-            tile.clicked.connect(lambda n=level: copy_text(f"Card(elevation={n})", tile))
+            tile.clicked.connect(lambda n=level, t=tile: copy_text(f"Card(elevation={n})", t))
             card.body.addWidget(tile)
         card.body.addStretch(1)
         return card
@@ -512,6 +553,7 @@ class OverviewPage(QWidget):
         read.setContentsMargins(8, 0, 0, 0)
         details = Popover(read, title="Beautiful Landscape", content="This picture is generated from theme tokens with QPainter, so it follows the active theme.")
         read.clicked.connect(lambda: details.show_at(read))
+        layout.addStretch(1)
         layout.addWidget(read)
         row.addWidget(story, 1)
         people = QVBoxLayout()
@@ -554,6 +596,7 @@ class OverviewPage(QWidget):
         def open_dialog() -> None:
             dialog = ConfirmDialog(panel, title="Confirm Action", message="Are you sure you want to continue?")
             dialog.confirmed.connect(lambda: Toast.show("Confirmed", parent=panel, variant="success", duration=1400))
+            dialog.finished.connect(dialog.deleteLater)
             dialog.open()
 
         confirm.clicked.connect(open_dialog)
@@ -584,7 +627,6 @@ class OverviewPage(QWidget):
     def _themes(self) -> BentoCard:
         card = BentoCard("Themes", 'ThemeManager.set_theme("dark")')
         tiles = QHBoxLayout()
-        radios = QHBoxLayout()
         group = QButtonGroup(card)
         self._theme_radios = {}
         for name, label in (("light", "Light"), ("dark", "Dark")):

@@ -5,8 +5,24 @@ import csv
 import json
 
 from ...compatibility.qt import (
-    QAbstractItemView, QApplication, QFileDialog, QFrame, QHBoxLayout, QHeaderView, QPainter, QRectF, QSize,
-    QStackedLayout, QStyle, QStyledItemDelegate, QStyleOptionViewItem, Qt, QTableView, QVBoxLayout, QWidget, Signal,
+    QAbstractItemView,
+    QApplication,
+    QFileDialog,
+    QFrame,
+    QHBoxLayout,
+    QHeaderView,
+    QPainter,
+    QRectF,
+    QSize,
+    QStackedLayout,
+    QStyle,
+    QStyledItemDelegate,
+    QStyleOptionViewItem,
+    Qt,
+    QTableView,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...core.theme_manager import ThemeManager
 from ..base import check_choice
@@ -163,6 +179,9 @@ class DataTable(QFrame):
         self.view = QTableView()
         self.view.setModel(self.model)
         self.view.setItemDelegate(_Delegate(self))
+        # Before enabling sorting: Qt sorts at once by the current indicator, which defaults to
+        # column 0, descending. Rows must keep their given order until someone sorts.
+        self.view.horizontalHeader().setSortIndicator(-1, Qt.SortOrder.AscendingOrder)
         self.view.setSortingEnabled(True)
         self.view.setShowGrid(False)
         self.view.setAlternatingRowColors(striped)
@@ -386,6 +405,7 @@ class DataTable(QFrame):
 
     def _show_column_menu(self, anchor) -> None:
         menu = Menu(self)
+        menu.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
         for column in self.model.columns:
             action = MenuItem(column.title, menu, id=column.key, checkable=True, checked=self.is_column_visible(column.key))
             action.toggled.connect(lambda on, key=column.key: self.set_column_visible(key, on))
@@ -394,6 +414,7 @@ class DataTable(QFrame):
 
     def _show_filter_menu(self) -> None:
         menu = Menu(self)
+        menu.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
         for column in self.model.columns:
             if not column.filterable:
                 continue
@@ -432,6 +453,7 @@ class DataTable(QFrame):
         if not rows:
             return None
         menu = Menu(self)
+        menu.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
         menu.add_item({"text": "Copy row" if len(rows) == 1 else f"Copy {len(rows)} rows", "icon": "copy"}).triggered.connect(lambda: self.copy_rows(rows))
         return menu
 

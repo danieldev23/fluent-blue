@@ -4,8 +4,23 @@ from __future__ import annotations
 from pathlib import Path
 
 from ...compatibility.qt import (
-    QColor, QFileDialog, QGridLayout, QHBoxLayout, QIcon, QLinearGradient, QPainter, QPen, QPixmap, QPointF, QRectF, QSize,
-    QSizePolicy, Qt, QToolButton, QWidget, Signal,
+    QColor,
+    QFileDialog,
+    QGridLayout,
+    QHBoxLayout,
+    QIcon,
+    QLinearGradient,
+    QPainter,
+    QPen,
+    QPixmap,
+    QPointF,
+    QRectF,
+    QSize,
+    QSizePolicy,
+    Qt,
+    QToolButton,
+    QWidget,
+    Signal,
 )
 from ...core.palette import parse_hex
 from ...core.theme_manager import ThemeManager

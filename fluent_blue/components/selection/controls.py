@@ -2,8 +2,26 @@
 from __future__ import annotations
 
 from ...compatibility.qt import (
-    Property, QAbstractButton, QButtonGroup, QCheckBox, QColor, QHBoxLayout, QPainter, QPen, QPropertyAnimation, QPushButton,
-    QRadioButton, QRectF, QSize, QSizePolicy, QSlider, QSpinBox, Qt, QVBoxLayout, QWidget, Signal,
+    Property,
+    QAbstractButton,
+    QButtonGroup,
+    QCheckBox,
+    QColor,
+    QHBoxLayout,
+    QPainter,
+    QPen,
+    QPropertyAnimation,
+    QPushButton,
+    QRadioButton,
+    QRectF,
+    QSize,
+    QSizePolicy,
+    QSlider,
+    QSpinBox,
+    Qt,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...core.theme_manager import ThemeManager
 from ..base import ThemedMixin, apply_common, check_choice, normalize_options

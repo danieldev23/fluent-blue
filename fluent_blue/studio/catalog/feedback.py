@@ -42,8 +42,10 @@ from fluent_blue import Button, MessageDialog
 demo = Button("Show message")
 
 def show():
-    MessageDialog(demo, title="Update installed", message="Restart the app to finish.", variant="success",
-                  buttons=("Later", "Restart")).open()
+    dialog = MessageDialog(demo, title="Update installed", message="Restart the app to finish.", variant="success",
+                           buttons=("Later", "Restart"))
+    dialog.finished.connect(dialog.deleteLater)
+    dialog.open()
 
 demo.clicked.connect(show)
 ''', ["Interrupt only for information people must see now."]),
@@ -56,6 +58,7 @@ def ask():
     dialog = ConfirmDialog(demo, title="Delete this project?", message="All its data is removed. This cannot be undone.",
                            confirm_text="Delete project", danger=True)
     dialog.confirmed.connect(lambda: Toast.show("Project deleted", parent=demo, variant="success"))
+    dialog.finished.connect(dialog.deleteLater)
     dialog.open()
 
 demo.clicked.connect(ask)
@@ -88,6 +91,7 @@ def run():
     timer.setInterval(40)
     timer.timeout.connect(lambda: dialog.set_value(dialog.value() + 1))
     dialog.finished.connect(lambda _r: timer.stop())
+    dialog.finished.connect(dialog.deleteLater)
     timer.start()
     dialog.open()
 

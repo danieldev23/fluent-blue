@@ -6,12 +6,10 @@ from ...compatibility.qt import (
     QLabel,
     QMouseEvent,
     QPoint,
-    QSize,
     Qt,
     QToolButton,
     QVBoxLayout,
     QWidget,
-    Signal,
 )
 from ...core.theme_manager import ThemeManager
 from ...icons import icon as make_icon

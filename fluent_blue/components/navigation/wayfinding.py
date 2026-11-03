@@ -2,7 +2,16 @@
 from __future__ import annotations
 
 from ...compatibility.qt import (
-    QButtonGroup, QHBoxLayout, QLabel, QPushButton, QSize, Qt, QTabBar, QTabWidget, QWidget, Signal,
+    QButtonGroup,
+    QHBoxLayout,
+    QLabel,
+    QPushButton,
+    QSize,
+    Qt,
+    QTabBar,
+    QTabWidget,
+    QWidget,
+    Signal,
 )
 from ...icons import icon as make_icon
 from ...icons import icon_pixmap

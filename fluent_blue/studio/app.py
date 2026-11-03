@@ -4,13 +4,36 @@ from __future__ import annotations
 import sys
 
 from .. import (
-    Avatar, Command, CommandPalette, IconButton, Menu, Popover, Sidebar, ListItem, Text, ThemeManager, Toast, __version__,
+    Avatar,
+    Command,
+    CommandPalette,
+    IconButton,
+    ListItem,
+    Menu,
+    Popover,
+    Sidebar,
+    Text,
+    ThemeManager,
+    Toast,
+    __version__,
 )
 from ..compatibility.qt import (
-    QApplication, QFrame, QHBoxLayout, QLabel, QMainWindow, QPainter, QPoint, QPushButton, QRectF, QSize, QStackedWidget, Qt,
-    QVBoxLayout, QWidget,
+    QApplication,
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QMainWindow,
+    QPainter,
+    QPoint,
+    QPushButton,
+    QRectF,
+    QSize,
+    QStackedWidget,
+    Qt,
+    QVBoxLayout,
+    QWidget,
+    delete_now,
 )
-from ..compatibility.qt import delete_now
 from ..icons import icon as make_icon
 from . import catalog
 from .art import LogoMark, PromoCard
@@ -178,6 +201,7 @@ class StudioWindow(QMainWindow):
             {"text": "Profile", "icon": "user"}, {"text": "Preferences", "icon": "settings"}, None,
             {"text": "About", "icon": "info-circle", "id": "About"},
         ])
+        menu.setAttribute(Qt.WidgetAttribute.WA_DeleteOnClose)
         menu.item_triggered.connect(self._on_user_item)
         menu.popup(self.user.mapToGlobal(QPoint(0, self.user.height() + 4)))
 
@@ -241,8 +265,8 @@ class StudioWindow(QMainWindow):
         Stylesheet changes visit every live widget, so this is what keeps a theme switch fast.
         """
         current = self.stack.currentWidget()
-        # Overview is the costliest to rebuild, and Playground holds the user's code.
-        hidden = [n for n, p in self.pages.items() if p is not current and n not in ("Overview", "Playground")]
+        # Overview is the costliest to rebuild; Playground and Themes hold the user's edits.
+        hidden = [n for n, p in self.pages.items() if p is not current and n not in ("Overview", "Playground", "Themes")]
         for name in hidden[:max(0, len(hidden) - keep)]:
             page = self.pages.pop(name)
             self.stack.removeWidget(page)
@@ -281,7 +305,12 @@ class _AvatarButton(QPushButton):
 
 
 def main() -> int:
-    """Run Design Studio."""
+    """Run Design Studio. ``--version`` prints the version and exits."""
+    if "--version" in sys.argv[1:]:
+        from .. import BINDING, BINDING_VERSION, QT_VERSION, __version__
+
+        print(f"fluent-blue {__version__} ({BINDING} {BINDING_VERSION}, Qt {QT_VERSION})")
+        return 0
     app = QApplication.instance() or QApplication(sys.argv)
     app.setApplicationName("Fluent Blue Design Studio")
     ThemeManager.set_theme("light")

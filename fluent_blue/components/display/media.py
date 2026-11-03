@@ -4,8 +4,21 @@ from __future__ import annotations
 import zlib
 
 from ...compatibility.qt import (
-    QBrush, QHBoxLayout, QLinearGradient, QPainter, QPainterPath, QPen, QPixmap, QRectF, QSize, QSizePolicy, Qt, QTimer,
-    QVBoxLayout, QWidget, Signal,
+    QBrush,
+    QHBoxLayout,
+    QLinearGradient,
+    QPainter,
+    QPainterPath,
+    QPen,
+    QPixmap,
+    QRectF,
+    QSize,
+    QSizePolicy,
+    Qt,
+    QTimer,
+    QVBoxLayout,
+    QWidget,
+    Signal,
 )
 from ...core.palette import readable_on
 from ...core.theme_manager import ThemeManager
