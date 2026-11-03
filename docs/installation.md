@@ -53,7 +53,7 @@ For headless use, such as CI, set `QT_QPA_PLATFORM=offscreen`.
 ## From source
 
 ```bash
-git clone https://github.com/your-github-user/fluent-blue
+git clone https://github.com/danieldev23/fluent-blue
 cd fluent-blue
 pip install -e ".[dev,pyqt6]"
 pytest

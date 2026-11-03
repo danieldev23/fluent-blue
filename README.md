@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/your-github-user/fluent-blue/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/your-github-user/fluent-blue/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://github.com/danieldev23/fluent-blue/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/danieldev23/fluent-blue/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="Python 3.11 | 3.13" src="https://img.shields.io/badge/python-3.11%20%7C%203.13-blue">
   <img alt="Qt 6" src="https://img.shields.io/badge/Qt-6.12-41cd52">
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-green">
@@ -231,7 +231,7 @@ The theme engine generates one application stylesheet per theme and applies it o
 ## Development
 
 ```bash
-git clone https://github.com/your-github-user/fluent-blue
+git clone https://github.com/danieldev23/fluent-blue
 cd fluent-blue
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,pyqt6]"          # or pyside6; use two venvs to test both

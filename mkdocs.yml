@@ -1,9 +1,9 @@
 site_name: Fluent Blue
 site_description: A modern, token-driven design system for PyQt6 and PySide6.
-site_url: https://your-github-user.github.io/fluent-blue/
-repo_url: https://github.com/your-github-user/fluent-blue
+site_url: https://danieldev23.github.io/fluent-blue/
+repo_url: https://github.com/danieldev23/fluent-blue
 repo_name: fluent-blue
-edit_uri: edit/main/docs/
+edit_uri: edit/master/docs/
 copyright: MIT License. Fluent Blue is an independent project.
 
 theme:

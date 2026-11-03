@@ -46,10 +46,10 @@ dev = [
 fluent-blue-studio = "fluent_blue.studio.app:main"
 
 [project.urls]
-Homepage = "https://github.com/your-github-user/fluent-blue"
-Documentation = "https://your-github-user.github.io/fluent-blue/"
-Changelog = "https://github.com/your-github-user/fluent-blue/blob/main/CHANGELOG.md"
-Issues = "https://github.com/your-github-user/fluent-blue/issues"
+Homepage = "https://github.com/danieldev23/fluent-blue"
+Documentation = "https://danieldev23.github.io/fluent-blue/"
+Changelog = "https://github.com/danieldev23/fluent-blue/blob/master/CHANGELOG.md"
+Issues = "https://github.com/danieldev23/fluent-blue/issues"
 
 [tool.hatch.version]
 path = "fluent_blue/__init__.py"

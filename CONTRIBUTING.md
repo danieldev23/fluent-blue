@@ -5,7 +5,7 @@ Thank you for helping. This guide explains how the project is organised, what a 
 ## Set up
 
 ```bash
-git clone https://github.com/your-github-user/fluent-blue
+git clone https://github.com/danieldev23/fluent-blue
 cd fluent-blue
 python -m venv .venv-pyqt && .venv-pyqt/bin/pip install -e ".[dev,pyqt6]"
 python -m venv .venv-pyside && .venv-pyside/bin/pip install -e ".[dev,pyside6]"
