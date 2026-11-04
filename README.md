@@ -31,10 +31,52 @@ Fluent Blue gives a Qt application the consistency of a real design system: a ce
 - **Design Studio**: a premium showcase application with live previews, properties, signals, copyable code and an *AI Prompt* tab per component.
 - **Honest quality gates**: 748 tests on both bindings, a UI audit that measures clipped text, overlaps and contrast on every page, and a performance report.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/overview-dark.png" alt="Design Studio, dark theme" width="430">
-  <img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/data-tables-light.png" alt="DataTable page" width="430">
-</p>
+## Gallery
+
+Every image is a headless grab of the live application at 1536 × 1024, produced by `python scripts/capture_screenshots.py`.
+
+<table>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/overview-light.png" alt="Overview, light" width="100%"><br><sub>Overview, light</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/overview-dark.png" alt="Overview, dark" width="100%"><br><sub>Overview, dark</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/foundations-light.png" alt="Foundations: spacing, radius, elevation, motion" width="100%"><br><sub>Foundations: spacing, radius, elevation, motion</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/colors-light.png" alt="Colors: ramps, roles and contrast" width="100%"><br><sub>Colors: ramps, roles and contrast</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/typography-light.png" alt="Typography roles" width="100%"><br><sub>Typography roles</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/icons-light.png" alt="Icons: 131 original SVG icons" width="100%"><br><sub>Icons: 131 original SVG icons</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/buttons-light.png" alt="Buttons page" width="100%"><br><sub>Buttons page</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/inputs-light.png" alt="Inputs page" width="100%"><br><sub>Inputs page</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/selection-light.png" alt="Selection page" width="100%"><br><sub>Selection page</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/navigation-light.png" alt="Navigation page" width="100%"><br><sub>Navigation page</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/data-display-light.png" alt="Data Display page" width="100%"><br><sub>Data Display page</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/data-tables-light.png" alt="DataTable: sort, filter, page, export" width="100%"><br><sub>DataTable: sort, filter, page, export</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/feedback-overlays-light.png" alt="Toasts, notification and snackbar" width="100%"><br><sub>Toasts, notification and snackbar</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/drawer-light.png" alt="Drawer over the Overview" width="100%"><br><sub>Drawer over the Overview</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/layout-light.png" alt="Layout page" width="100%"><br><sub>Layout page</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/advanced-components-light.png" alt="Advanced components" width="100%"><br><sub>Advanced components</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/themes-light.png" alt="Themes and the custom theme builder" width="100%"><br><sub>Themes and the custom theme builder</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/playground-light.png" alt="Playground: edit and run any example" width="100%"><br><sub>Playground: edit and run any example</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/colors-dark.png" alt="Colors, dark" width="100%"><br><sub>Colors, dark</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/data-tables-dark.png" alt="DataTable, dark" width="100%"><br><sub>DataTable, dark</sub></td>
+  </tr>
+</table>
 
 ## Installation
 
@@ -178,9 +220,6 @@ Read tokens anywhere: `ThemeManager.color("text-secondary")`, `ThemeManager.qcol
 
 Every component section has five tabs: a copyable Python example, Properties and Signals generated from the source, Usage guidance and an **AI Prompt** that gives a coding agent the exact API.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/component-page-light.png" alt="A component page in Design Studio" width="880">
-</p>
 
 ## Working with AI coding agents
 

@@ -19,4 +19,4 @@ python examples/projects_app.py
 
 Design Studio's Playground runs any catalog example as editable code. Pick a component, change the snippet, press **Run** or ++ctrl+enter++. The snippet must assign a widget to `demo`.
 
-![Playground](assets/screenshots/component-page-light.png)
+![Playground](assets/screenshots/playground-light.png)
