@@ -50,6 +50,8 @@ Qt needs a few system libraries that minimal images lack. On Debian and Ubuntu:
 sudo apt-get install -y libegl1 libgl1 libopengl0 libxkbcommon-x11-0 libxcb-cursor0 libdbus-1-3 libfontconfig1
 ```
 
+`VideoPlayer` additionally needs `libpulse0 libpulse-mainloop-glib0` (and `ffmpeg` for many formats). Without them everything else works and `VideoPlayer` shows an explanation.
+
 For headless use, such as CI, set `QT_QPA_PLATFORM=offscreen`.
 
 ## From source

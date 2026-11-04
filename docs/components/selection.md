@@ -340,3 +340,88 @@ demo = SpinBox(16, minimum=8, maximum=72, suffix=" px")
 - Add a suffix so that the unit is never ambiguous.
 
 [AI brief for SpinBox](../ai/components/SpinBox.md){ .md-button }
+
+## Rating
+
+A star rating that can be set with the mouse or the keyboard.
+
+![Rating](../assets/components/Rating.png)
+
+```python
+from fluent_blue import Rating, Stack, Text, Toast
+
+live = Rating(3)
+caption = Text("3 of 5", color="text-secondary")
+live.value_changed.connect(lambda value: caption.setText(f"{value:g} of 5"))
+demo = Stack([
+    Stack([live, caption], direction="horizontal", align="center", spacing=3),
+    Rating(3.5, allow_half=True, size=26),
+    Rating(4, read_only=True, size=18),
+], spacing=3)
+```
+
+**Properties**
+
+| Name | Default | Description |
+| --- | --- | --- |
+| `value` | `0` | Initial value from 0 to count. |
+| `parent` | `None` | Parent widget. |
+| `count` | `5` | Number of stars. |
+| `allow_half` | `False` | Allow half-star values. |
+| `allow_clear` | `True` | Clicking the current value again resets it to 0. |
+| `read_only` | `False` | Display only; the value cannot be changed by the user. |
+| `size` | `22` | Star size in pixels. |
+| `disabled` | `False` | Start disabled. |
+| `tooltip` | `None` | Tooltip text. |
+
+**Signals**
+
+- `value_changed(float)`: The new value, after a change by the user or by set_value.
+
+**Best practices**
+
+- Use half stars only when the average is shown with that precision.
+- Clicking the current value again clears it; pass allow_clear=False to prevent that.
+- Set read_only=True to display an average rating.
+
+[AI brief for Rating](../ai/components/Rating.md){ .md-button }
+
+## RangeSlider
+
+A slider with two handles that selects a range.
+
+![RangeSlider](../assets/components/RangeSlider.png)
+
+```python
+from fluent_blue import RangeSlider, Stack, Text
+
+readout = Text("Price: $200 to $800", color="text-secondary")
+slider = RangeSlider(200, 800, minimum=0, maximum=1000, step=50)
+slider.range_changed.connect(lambda low, high: readout.setText(f"Price: ${low} to ${high}"))
+demo = Stack([slider, readout], spacing=2)
+```
+
+**Properties**
+
+| Name | Default | Description |
+| --- | --- | --- |
+| `low` | `20` | Initial lower value. |
+| `high` | `80` | Initial upper value. |
+| `parent` | `None` | Parent widget. |
+| `minimum` | `0` | Lowest allowed value. |
+| `maximum` | `100` | Highest allowed value. |
+| `step` | `1` | Granularity of values. |
+| `disabled` | `False` | Start disabled. |
+| `tooltip` | `None` | Tooltip text. |
+
+**Signals**
+
+- `range_changed(int, int)`: The new lower and upper values.
+
+**Best practices**
+
+- Show the chosen range in text next to the slider.
+- Use step to avoid meaningless precision.
+- Up and Down choose the handle, Left and Right move it.
+
+[AI brief for RangeSlider](../ai/components/RangeSlider.md){ .md-button }

@@ -67,6 +67,8 @@ Read the brief for a component before you use or change it. Print one with `pyth
 - [`MultiSelect`](docs/ai/components/MultiSelect.md): Choose any number of values from a checkable popup list.
 - [`RadioButton`](docs/ai/components/RadioButton.md): A radio button. Use RadioGroup for the common case.
 - [`RadioGroup`](docs/ai/components/RadioGroup.md): A set of mutually exclusive radio buttons.
+- [`RangeSlider`](docs/ai/components/RangeSlider.md): A slider with two handles that selects a range.
+- [`Rating`](docs/ai/components/Rating.md): A star rating that can be set with the mouse or the keyboard.
 - [`SegmentedControl`](docs/ai/components/SegmentedControl.md): A compact, mutually exclusive option strip.
 - [`Select`](docs/ai/components/Select.md): Choose one value from a list.
 - [`Slider`](docs/ai/components/Slider.md): A value slider.
@@ -94,10 +96,12 @@ Read the brief for a component before you use or change it. Print one with `pyth
 - [`Badge`](docs/ai/components/Badge.md): A small status label or dot.
 - [`BadgeOverlay`](docs/ai/components/BadgeOverlay.md): Wraps any child widget and pins a Badge to its top-right corner.
 - [`Card`](docs/ai/components/Card.md): A content container.
+- [`Carousel`](docs/ai/components/Carousel.md): A set of slides shown one at a time, with arrows, dots, keyboard and optional autoplay.
 - [`CircularProgress`](docs/ai/components/CircularProgress.md): A circular progress indicator, which also serves as a spinner.
 - [`ConsoleWidget`](docs/ai/components/ConsoleWidget.md): A high-performance rich console / terminal widget for desktop tools and logging.
 - [`Divider`](docs/ai/components/Divider.md): A separator line, optionally with centered text.
 - [`EmptyState`](docs/ai/components/EmptyState.md): Explains why a view is empty and what to do next.
+- [`Kbd`](docs/ai/components/Kbd.md): A keyboard shortcut drawn as key caps, such as Ctrl + K.
 - [`ListItem`](docs/ai/components/ListItem.md): One row of a list.
 - [`Popover`](docs/ai/components/Popover.md): A floating panel anchored to a widget. It closes on outside click or Escape.
 - [`ProgressBar`](docs/ai/components/ProgressBar.md): A horizontal progress bar.
@@ -127,6 +131,7 @@ Read the brief for a component before you use or change it. Print one with `pyth
 
 ### Layout
 
+- [`Accordion`](docs/ai/components/Accordion.md): A vertical stack of collapsible sections, optionally allowing only one open at a time.
 - [`CollapsiblePanel`](docs/ai/components/CollapsiblePanel.md): A panel whose content expands and collapses.
 - [`Container`](docs/ai/components/Container.md): Centers content and limits its width, keeping long lines readable on wide screens.
 - [`Drawer`](docs/ai/components/Drawer.md): A panel that slides in from the edge of a window.
@@ -153,6 +158,7 @@ Read the brief for a component before you use or change it. Print one with `pyth
 - [`Stepper`](docs/ai/components/Stepper.md): Shows progress through ordered steps. Arrow keys move when clickable.
 - [`TimePicker`](docs/ai/components/TimePicker.md): A time field with hour and minute columns.
 - [`TreeView`](docs/ai/components/TreeView.md): A tree from nested dicts, with built-in filtering.
+- [`VideoPlayer`](docs/ai/components/VideoPlayer.md): A video player with play and pause, seeking, volume, speed and full screen.
 - [`Wizard`](docs/ai/components/Wizard.md): A multi-step flow with a stepper, validation and navigation.
 
 ### Uncatalogued

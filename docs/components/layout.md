@@ -362,3 +362,37 @@ demo = launch
 - Keep the keyboard shortcuts for closing the window working when you customize it.
 
 [AI brief for FluentWindow](../ai/components/FluentWindow.md){ .md-button }
+
+## Accordion
+
+A vertical stack of collapsible sections, optionally allowing only one open at a time.
+
+![Accordion](../assets/components/Accordion.png)
+
+```python
+from fluent_blue import Accordion, Text
+
+demo = Accordion(exclusive=True)
+demo.add_item("What is Fluent Blue?", "A design system for PyQt6 and PySide6 desktop applications.", expanded=True)
+demo.add_item("Can I change the theme at runtime?", "Yes. ThemeManager.set_theme restyles every open window.")
+demo.add_item("Does it work offline?", Text("It has no network code at all.", color="text-secondary"))
+```
+
+**Properties**
+
+| Name | Default | Description |
+| --- | --- | --- |
+| `parent` | `None` | Parent widget. |
+| `exclusive` | `False` | Opening a section closes the others. |
+| `spacing` | `2` | Spacing token step between sections. |
+
+**Signals**
+
+- `expanded_changed(int, bool)`: The index of a section and whether it is now expanded.
+
+**Best practices**
+
+- Use exclusive=True for FAQs so that one answer is open at a time.
+- Put long help text here, not essential form fields.
+
+[AI brief for Accordion](../ai/components/Accordion.md){ .md-button }

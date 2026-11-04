@@ -2,6 +2,18 @@
 
 All notable changes are documented here. The project follows [Semantic Versioning](https://semver.org/); until 1.0, breaking changes bump the minor version.
 
+## Unreleased
+
+### Added
+
+- `Rating`: star rating with half steps, hover preview, keyboard control and a read-only mode.
+- `RangeSlider`: a two-handle slider with keyboard and mouse control; the handles cannot cross.
+- `Accordion`: collapsible sections, optionally exclusive.
+- `Carousel`: slides with arrows, clickable dots, keyboard control and autoplay that pauses on hover, focus and while hidden.
+- `Kbd`: keyboard shortcuts drawn as key caps.
+- `VideoPlayer`: a themed player with seek, volume, speed, full screen and keyboard control, built on QtMultimedia. It degrades to an explanation where QtMultimedia cannot load.
+- Icons `volume` and `volume-off`.
+
 ## 0.1.0 - 2026-11-04
 
 ### Added

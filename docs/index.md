@@ -4,7 +4,7 @@ A modern, token-driven design system for Python desktop applications. One code b
 
 ![Design Studio, light theme](assets/screenshots/overview-light.png)
 
-Fluent Blue gives a Qt application the consistency of a real design system: a central set of design tokens, a runtime theme engine, an original icon set, and 103 components that all read from the same tokens. It ships with **Design Studio**, an interactive showcase where every example is a live widget, and with briefs that let AI coding agents use the library without inventing APIs.
+Fluent Blue gives a Qt application the consistency of a real design system: a central set of design tokens, a runtime theme engine, an original icon set, and 109 components that all read from the same tokens. It ships with **Design Studio**, an interactive showcase where every example is a live widget, and with briefs that let AI coding agents use the library without inventing APIs.
 
 ## Start here
 
@@ -23,10 +23,10 @@ Fluent Blue gives a Qt application the consistency of a real design system: a ce
 | --- | --- |
 | **Design tokens** | Color, typography, spacing, radius, elevation and motion, configured in one place. |
 | **Theme engine** | Switch at runtime; every open window follows in about 80 ms. Register custom themes from one primary color. |
-| **103 components** | From `Button` to `DataTable`, `CommandPalette`, `CodeEditor`, `DatePicker`, `ColorPicker`, `Wizard` and `RichTextEditor`. |
-| **Original icons** | 131 SVG icons on a 24 px grid, recolored by the theme. |
+| **109 components** | From `Button` to `DataTable`, `CommandPalette`, `CodeEditor`, `DatePicker`, `ColorPicker`, `Wizard` and `RichTextEditor`. |
+| **Original icons** | 133 SVG icons on a 24 px grid, recolored by the theme. |
 | **Accessibility** | Every text pairing meets WCAG AA, enforced by tests. Keyboard access and visible focus throughout. |
-| **Quality gates** | 748 tests on both bindings, a UI audit that measures clipped text, overlaps and contrast, and a performance report. |
+| **Quality gates** | 834 tests on both bindings, a UI audit that measures clipped text, overlaps and contrast, and a performance report. |
 | **AI-ready** | A generated brief per component, so coding assistants work from the real API. |
 
 ## Compatibility

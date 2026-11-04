@@ -4,6 +4,7 @@
 
 ## Components
 
+- [Accordion](docs/ai/components/Accordion.md): A vertical stack of collapsible sections, optionally allowing only one open at a time.
 - [Alert](docs/ai/components/Alert.md): An inline message in the page flow.
 - [Avatar](docs/ai/components/Avatar.md): A user image or initials.
 - [AvatarGroup](docs/ai/components/AvatarGroup.md): Overlapping avatars with a "+N" overflow.
@@ -13,6 +14,7 @@
 - [Button](docs/ai/components/Button.md): A push button with variants, sizes, icons and a loading state.
 - [Calendar](docs/ai/components/Calendar.md): A month view. Arrow keys move, Enter selects and Page Up/Down change the month.
 - [Card](docs/ai/components/Card.md): A content container.
+- [Carousel](docs/ai/components/Carousel.md): A set of slides shown one at a time, with arrows, dots, keyboard and optional autoplay.
 - [Checkbox](docs/ai/components/Checkbox.md): A checkbox, with optional indeterminate state.
 - [CircularProgress](docs/ai/components/CircularProgress.md): A circular progress indicator, which also serves as a spinner.
 - [ClearableInput](docs/ai/components/ClearableInput.md): An Input with the clear button on by default.
@@ -47,6 +49,7 @@
 - [ImageViewer](docs/ai/components/ImageViewer.md): An image viewer with zoom, pan, rotate and fit.
 - [Input](docs/ai/components/Input.md): A text input with icons, a clear button and validation state.
 - [InputGroup](docs/ai/components/InputGroup.md): Joins an input with text or widget addons inside a single border.
+- [Kbd](docs/ai/components/Kbd.md): A keyboard shortcut drawn as key caps, such as Ctrl + K.
 - [ListItem](docs/ai/components/ListItem.md): One row of a list.
 - [LoadingButton](docs/ai/components/LoadingButton.md): A primary button with start() and stop() shortcuts for async work.
 - [LoadingOverlay](docs/ai/components/LoadingOverlay.md): Blocks a widget and shows a spinner while it is busy.
@@ -70,6 +73,8 @@
 - [ProgressDialog](docs/ai/components/ProgressDialog.md): A modal that reports the progress of a long operation.
 - [RadioButton](docs/ai/components/RadioButton.md): A radio button. Use RadioGroup for the common case.
 - [RadioGroup](docs/ai/components/RadioGroup.md): A set of mutually exclusive radio buttons.
+- [RangeSlider](docs/ai/components/RangeSlider.md): A slider with two handles that selects a range.
+- [Rating](docs/ai/components/Rating.md): A star rating that can be set with the mouse or the keyboard.
 - [Result](docs/ai/components/Result.md): The outcome of an operation.
 - [RichTextArea](docs/ai/components/RichTextArea.md): The editing surface of RichTextEditor.
 - [RichTextEditor](docs/ai/components/RichTextEditor.md): A rich text editor with a formatting toolbar.
@@ -106,4 +111,5 @@
 - [ToastCard](docs/ai/components/ToastCard.md): The card behind Toast, Notification and Snackbar.
 - [Tooltip](docs/ai/components/Tooltip.md): Attach a rich, delayed tooltip to a widget. It also appears on keyboard focus.
 - [TreeView](docs/ai/components/TreeView.md): A tree from nested dicts, with built-in filtering.
+- [VideoPlayer](docs/ai/components/VideoPlayer.md): A video player with play and pause, seeking, volume, speed and full screen.
 - [Wizard](docs/ai/components/Wizard.md): A multi-step flow with a stepper, validation and navigation.

@@ -6,6 +6,7 @@ from pathlib import Path
 import pytest
 
 import fluent_blue
+from fluent_blue.compatibility.qt import delete_now
 from fluent_blue.studio import catalog
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,10 +19,17 @@ def test_example_builds(qtbot, path):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     widget = module.build()
-    qtbot.addWidget(widget)
-    widget.show()
-    qtbot.waitExposed(widget)
-    assert widget.isVisible()
+    try:
+        widget.show()
+        qtbot.waitExposed(widget)
+        assert widget.isVisible()
+    finally:
+        # Examples connect closures that refer to their own window, which makes a reference cycle. Left to the
+        # cyclic garbage collector, the window is destroyed at a random moment, possibly in the middle of a paint
+        # event in a later test, which crashes Qt. Release it deterministically instead.
+        widget.close()
+        delete_now(widget)
+        qtbot.wait(1)
 
 
 def test_readme_tutorial_snippets_are_valid_python():

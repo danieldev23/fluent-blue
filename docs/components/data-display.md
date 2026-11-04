@@ -639,3 +639,72 @@ demo.setMinimumHeight(180)
 - Use for tool and bot output. Use LogViewer when people need level filters and search.
 
 [AI brief for ConsoleWidget](../ai/components/ConsoleWidget.md){ .md-button }
+
+## Carousel
+
+A set of slides shown one at a time, with arrows, dots, keyboard and optional autoplay.
+
+![Carousel](../assets/components/Carousel.png)
+
+```python
+from fluent_blue import Card, Carousel, Text
+
+demo = Carousel(autoplay_ms=0)
+for number, (title, note) in enumerate((("Design tokens", "One source for every color and size."), ("Runtime themes", "Switch light and dark in about 80 ms."),
+                                         ("Real components", "More than a hundred, all keyboard accessible.")), start=1):
+    slide = Card(title=f"{number}. {title}", subtitle=note)
+    slide.setMinimumHeight(120)
+    demo.add_slide(slide)
+```
+
+**Properties**
+
+| Name | Default | Description |
+| --- | --- | --- |
+| `parent` | `None` | Parent widget. |
+| `autoplay_ms` | `0` | Milliseconds between slides; 0 turns autoplay off. |
+| `loop` | `True` | Wrap from the last slide to the first and back. |
+| `show_arrows` | `True` | Show previous and next buttons. |
+| `show_dots` | `True` | Show the page indicator. |
+
+**Signals**
+
+- `current_changed(int)`: The index of the slide now shown.
+
+**Best practices**
+
+- Autoplay pauses on hover, on focus and when hidden; never autoplay important content.
+- Left and Right arrow keys change slides.
+- Keep slides the same height to avoid the layout jumping.
+
+[AI brief for Carousel](../ai/components/Carousel.md){ .md-button }
+
+## Kbd
+
+A keyboard shortcut drawn as key caps, such as Ctrl + K.
+
+![Kbd](../assets/components/Kbd.png)
+
+```python
+from fluent_blue import Kbd, Stack, Text
+
+def line(label, keys):
+    return Stack([Text(label, color="text-secondary"), Kbd(keys)], direction="horizontal", align="center", spacing=3)
+
+demo = Stack([line("Command palette", "Ctrl+K"), line("Save", "Ctrl+S"), line("Reopen closed tab", "Ctrl+Shift+T"), Kbd("Esc", size="small")], spacing=3)
+```
+
+**Properties**
+
+| Name | Default | Description |
+| --- | --- | --- |
+| `keys` | `''` | A string such as "Ctrl+Shift+P", or a list of key names. |
+| `parent` | `None` | Parent widget. |
+| `size` | `'medium'` | small or medium. |
+
+**Best practices**
+
+- Write modifiers in the order Ctrl, Alt, Shift, then the key.
+- Use the platform's names, such as Cmd on macOS.
+
+[AI brief for Kbd](../ai/components/Kbd.md){ .md-button }

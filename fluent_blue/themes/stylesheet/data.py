@@ -12,6 +12,11 @@ LogViewer, RichTextEditor, ImageViewer {{ background: {c.surface}; border: 1px s
 LogViewer QPlainTextEdit {{ border: none; border-top: 1px solid {c.border_subtle}; background: transparent; padding: 6px 8px; {x.font('monospace')} {x.mono()} }}
 RichTextEditor RichTextArea {{ border: none; border-top: 1px solid {c.border_subtle}; border-radius: 0; background: transparent; }}
 RichTextEditor RichTextArea:focus {{ border: none; border-top: 1px solid {c.border_focus}; padding: 6px 8px; }}
+VideoPlayer {{ background: {c.surface}; border: 1px solid {c.border}; border-radius: {x.r('md')}; }}
+VideoPlayer QWidget#videoStage {{ background: {c.gray_1000}; border-top-left-radius: {x.r('md')}; border-top-right-radius: {x.r('md')}; }}
+VideoPlayer QFrame#videoControls {{ background: {c.surface}; border: none; border-top: 1px solid {c.border_subtle};
+    border-bottom-left-radius: {x.r('md')}; border-bottom-right-radius: {x.r('md')}; }}
+VideoPlayer EmptyState {{ background: {c.surface_secondary}; border-top-left-radius: {x.r('md')}; border-top-right-radius: {x.r('md')}; }}
 TreeView, FileTree {{ background: {c.surface}; border: 1px solid {c.border_subtle}; border-radius: {x.r('md')}; padding: 4px; }}
 TreeView:focus, FileTree:focus {{ border-color: {c.border_focus}; }}
 ImageViewer QGraphicsView {{ border: none; border-top: 1px solid {c.border_subtle}; background: {c.surface_tertiary}; }}

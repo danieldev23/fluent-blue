@@ -12,6 +12,14 @@ Something imported the other binding before Fluent Blue. Remove one binding from
 
 You are running PySide6 on Linux with Python 3.11. The Linux wheels of PySide6 6.9 to 6.12 corrupt the reference count of `True`/`False` when custom signals are emitted; Python 3.12 and later tolerate it. Upgrade Python to 3.12 or newer, or use PyQt6.
 
+## `VideoPlayer` says "Video playback is unavailable"
+
+Qt could not load QtMultimedia. On minimal Linux images install PulseAudio's client library and, for common formats, the FFmpeg runtime: `sudo apt-get install -y libpulse0 libpulse-mainloop-glib0 ffmpeg`. Check `VideoPlayer.is_available()` at start-up if your application must work without it.
+
+## `VideoPlayer` shows "This file could not be played"
+
+The format or codec is not supported by Qt's media backend on this system. MP4 with H.264 and AAC plays everywhere; convert other files with `ffmpeg -i input.mkv -pix_fmt yuv420p output.mp4`.
+
 ## Nothing shows, or the process exits at once
 
 A `QApplication` must exist before any widget, and `app.exec()` must run. The examples in `examples/` show the shape.

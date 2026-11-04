@@ -84,8 +84,8 @@ def progress_renderer(maximum: float = 100, variant: str = "primary"):
 class _Delegate(QStyledItemDelegate):
     """Paints the hover or selection background, then the custom renderer."""
 
-    def __init__(self, table) -> None:
-        super().__init__(table)
+    def __init__(self, table, parent=None) -> None:
+        super().__init__(parent or table)
         self._table = table
 
     def paint(self, painter, option, index) -> None:
@@ -178,7 +178,9 @@ class DataTable(QFrame):
         self._stack = QStackedLayout(self._holder)
         self.view = QTableView()
         self.view.setModel(self.model)
-        self.view.setItemDelegate(_Delegate(self))
+        # Parented to the view, not the table: the view lives in another container, and a delegate that
+        # dies before its view makes the view paint one last frame with a deleted object.
+        self.view.setItemDelegate(_Delegate(self, self.view))
         # Before enabling sorting: Qt sorts at once by the current indicator, which defaults to
         # column 0, descending. Rows must keep their given order until someone sorts.
         self.view.horizontalHeader().setSortIndicator(-1, Qt.SortOrder.AscendingOrder)

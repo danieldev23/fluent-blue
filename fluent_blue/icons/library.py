@@ -88,6 +88,8 @@ ICONS: dict[str, str] = {
     "heart": '<path d="M12 20S3.5 15 3.5 9A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 8.5 3c0 6-8.5 11-8.5 11z"/>',
     "bookmark": '<path d="M6.5 4.5A1 1 0 0 1 7.5 3.5h9a1 1 0 0 1 1 1v16L12 16.5l-5.5 4z"/>',
     "flag": '<path d="M5.5 21V4M5.5 4.5c4-2 7 2 13 0v9.5c-6 2-9-2-13 0"/>',
+    "volume": '<path d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/>',
+    "volume-off": '<path d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/>',
     "play": '<path d="M7 4.5l12 7.5-12 7.5z"/>',
     "pause": '<path d="M8.5 5v14M15.5 5v14"/>',
     "stop": '<rect x="6" y="6" width="12" height="12" rx="1.5"/>',

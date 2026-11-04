@@ -16,7 +16,7 @@
   <img alt="Python 3.11 | 3.12 | 3.13" src="https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue">
   <img alt="Qt 6" src="https://img.shields.io/badge/Qt-6.12-41cd52">
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-green">
-  <img alt="Tests" src="https://img.shields.io/badge/tests-748%20passing-brightgreen">
+  <img alt="Tests" src="https://img.shields.io/badge/tests-834%20passing-brightgreen">
 </p>
 
 ---
@@ -46,13 +46,13 @@ app.exec()
 
 ## Highlights
 
-- **103 components** across buttons, inputs, selection, navigation, data display, data tables, feedback, layout and advanced widgets such as `DataTable`, `CommandPalette`, `CodeEditor`, `DatePicker`, `ColorPicker`, `Wizard` and `RichTextEditor`.
+- **109 components** across buttons, inputs, selection, navigation, data display, data tables, feedback, layout and advanced widgets such as `DataTable`, `CommandPalette`, `CodeEditor`, `DatePicker`, `ColorPicker`, `Wizard` and `RichTextEditor`.
 - **Design tokens** for color, typography, spacing, radius, elevation and motion. Components never hardcode a color.
 - **Runtime themes**: light, dark and high-contrast built in; register your own with one call. Switching restyles every open window in about 80 ms.
 - **Accessible by measurement**: every text pairing meets WCAG AA (4.5:1), checked by tests; keyboard access and visible focus everywhere.
-- **Original SVG icons** (131) on a 24 px grid, recolored by the theme and cached.
+- **Original SVG icons** (133) on a 24 px grid, recolored by the theme and cached.
 - **Design Studio**: a premium showcase application with live previews, properties, signals, copyable code and an *AI Prompt* tab per component.
-- **Honest quality gates**: 748 tests on both bindings, a UI audit that measures clipped text, overlaps and contrast on every page, and a performance report.
+- **Honest quality gates**: 834 tests on both bindings, a UI audit that measures clipped text, overlaps and contrast on every page, and a performance report.
 
 ## Gallery
 
@@ -69,7 +69,7 @@ Every image is a headless grab of the live application at 1536 × 1024, produced
   </tr>
   <tr>
     <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/typography-light.png" alt="Typography roles" width="100%"><br><sub>Typography roles</sub></td>
-    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/icons-light.png" alt="Icons: 131 original SVG icons" width="100%"><br><sub>Icons: 131 original SVG icons</sub></td>
+    <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/icons-light.png" alt="Icons: 133 original SVG icons" width="100%"><br><sub>Icons: 133 original SVG icons</sub></td>
   </tr>
   <tr>
     <td width="50%"><img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/buttons-light.png" alt="Buttons page" width="100%"><br><sub>Buttons page</sub></td>
@@ -270,13 +270,13 @@ A test fails if the committed briefs fall behind the code.
 | --- | --- |
 | Buttons | `Button`, `PrimaryButton`, `SecondaryButton`, `OutlineButton`, `GhostButton`, `TextButton`, `DangerButton`, `IconButton`, `LoadingButton`, `SplitButton` |
 | Inputs | `Input`, `PasswordInput`, `SearchInput`, `NumberInput`, `TextArea`, `ClearableInput`, `InputGroup`, `FormField`, `OtpInput`, `TagInput` |
-| Selection | `Select`, `MultiSelect`, `ComboBox`, `Checkbox`, `RadioButton`, `RadioGroup`, `Switch`, `SegmentedControl`, `Slider`, `SpinBox` |
+| Selection | `Select`, `MultiSelect`, `ComboBox`, `Checkbox`, `RadioButton`, `RadioGroup`, `Switch`, `SegmentedControl`, `Slider`, `SpinBox`, `Rating`, `RangeSlider` |
 | Navigation | `Sidebar`, `SidebarItem`, `NavigationBar`, `Breadcrumb`, `Tabs`, `TabBar`, `Pagination`, `Menu`, `MenuItem`, `DropdownMenu`, `CommandPalette` |
-| Data display | `Card`, `StatisticCard`, `Badge`, `BadgeOverlay`, `Tag`, `Avatar`, `AvatarGroup`, `Divider`, `Tooltip`, `Popover`, `ProgressBar`, `CircularProgress`, `Skeleton`, `EmptyState`, `Result`, `Timeline`, `ListItem`, `Text`, `ConsoleWidget` |
+| Data display | `Card`, `StatisticCard`, `Badge`, `BadgeOverlay`, `Tag`, `Avatar`, `AvatarGroup`, `Divider`, `Tooltip`, `Popover`, `ProgressBar`, `CircularProgress`, `Skeleton`, `EmptyState`, `Result`, `Timeline`, `ListItem`, `Text`, `ConsoleWidget`, `Carousel`, `Kbd` |
 | Data tables | `DataTable`, `Column`, `DataTableModel`, `badge_renderer`, `progress_renderer` |
 | Feedback | `Alert`, `Toast`, `Notification`, `Snackbar`, `MessageDialog`, `ConfirmDialog`, `LoadingOverlay`, `ProgressDialog` |
-| Layout | `Container`, `Stack`, `Grid`, `Splitter`, `Panel`, `Drawer`, `Modal`, `CollapsiblePanel`, `ScrollArea`, `FluentWindow`, `TitleBar` |
-| Advanced | `DatePicker`, `Calendar`, `TimePicker`, `ColorPicker`, `FilePicker`, `ImageViewer`, `CodeEditor`, `LogViewer`, `TreeView`, `FileTree`, `Stepper`, `Wizard`, `RichTextEditor` |
+| Layout | `Container`, `Stack`, `Grid`, `Splitter`, `Panel`, `Drawer`, `Modal`, `CollapsiblePanel`, `ScrollArea`, `FluentWindow`, `TitleBar`, `Accordion` |
+| Advanced | `DatePicker`, `Calendar`, `TimePicker`, `ColorPicker`, `FilePicker`, `ImageViewer`, `CodeEditor`, `LogViewer`, `TreeView`, `FileTree`, `Stepper`, `Wizard`, `RichTextEditor`, `VideoPlayer` |
 
 Full documentation, with a screenshot and the API of each component, is in [`docs/`](https://github.com/danieldev23/fluent-blue/blob/master/docs/index.md) and builds with MkDocs Material.
 
@@ -303,7 +303,7 @@ cd fluent-blue
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,pyqt6]"          # or pyside6; use two venvs to test both
 
-pytest                                  # 748 tests, headless
+pytest                                  # 834 tests, headless
 QT_QPA_PLATFORM=offscreen python scripts/ui_audit.py --deep   # clipped text, overlaps, contrast on every page
 python scripts/perf_report.py           # startup, page, theme switch and toast timings
 python -m fluent_blue.agent_prompts --export .                # refresh AI briefs

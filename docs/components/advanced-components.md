@@ -498,3 +498,45 @@ demo.setMinimumHeight(180)
 - Store to_html or to_markdown, depending on what your backend needs.
 
 [AI brief for RichTextEditor](../ai/components/RichTextEditor.md){ .md-button }
+
+## VideoPlayer
+
+A video player with play and pause, seeking, volume, speed and full screen.
+
+![VideoPlayer](../assets/components/VideoPlayer.png)
+
+```python
+from fluent_blue import VideoPlayer
+
+demo = VideoPlayer()  # Pass a path or URL, or press "Open video…": VideoPlayer("clip.mp4", autoplay=True)
+demo.setMinimumHeight(300)
+```
+
+**Properties**
+
+| Name | Default | Description |
+| --- | --- | --- |
+| `source` | `None` | A file path or URL to load. |
+| `parent` | `None` | Parent widget. |
+| `autoplay` | `False` | Start playing as soon as the media is loaded. |
+| `loop` | `False` | Start again at the end. |
+| `muted` | `False` | Start muted. |
+| `volume` | `0.8` | Initial volume from 0 to 1. |
+| `show_controls` | `True` | Show the control bar. |
+| `accessible_name` | `'Video player'` | Name for assistive technology. |
+
+**Signals**
+
+- `position_changed(int)`: The playback position in milliseconds.
+- `duration_changed(int)`: The media length in milliseconds.
+- `state_changed(str)`: playing, paused or stopped.
+- `ended()`: Playback reached the end and did not loop.
+- `error_occurred(str)`: A readable description of why the media cannot play.
+
+**Best practices**
+
+- Space plays and pauses, Left and Right seek five seconds, Up and Down change the volume, M mutes and F toggles full screen.
+- It pauses by itself when hidden, so a closed tab never keeps playing sound.
+- Check VideoPlayer.is_available() when you must support minimal Linux images, which can lack PulseAudio.
+
+[AI brief for VideoPlayer](../ai/components/VideoPlayer.md){ .md-button }

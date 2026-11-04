@@ -106,3 +106,21 @@ for _module in (QtCore, QtGui, QtWidgets, QtSvg):
         if _name.startswith("Q") and _name != "QT_VERSION":
             globals()[_name] = getattr(_module, _name)
 del _module, _name
+
+
+def _optional(name: str):
+    try:
+        return importlib.import_module(f"{BINDING}.{name}")
+    except ImportError:  # For example, QtMultimedia needs libpulse on minimal Linux images.
+        return None
+
+
+QtMultimedia = _optional("QtMultimedia")
+QtMultimediaWidgets = _optional("QtMultimediaWidgets")
+MULTIMEDIA_AVAILABLE = QtMultimedia is not None and QtMultimediaWidgets is not None
+if MULTIMEDIA_AVAILABLE:
+    QMediaPlayer = QtMultimedia.QMediaPlayer
+    QAudioOutput = QtMultimedia.QAudioOutput
+    QVideoWidget = QtMultimediaWidgets.QVideoWidget
+else:
+    QMediaPlayer = QAudioOutput = QVideoWidget = None
