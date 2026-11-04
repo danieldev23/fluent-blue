@@ -254,7 +254,7 @@ def foundations_page() -> QWidget:
         name.setFixedWidth(84)
         row.addWidget(name)
         row.addWidget(_ScaleBar(value))
-        row.addWidget(Text(f"{value}px", style="caption", color="text-tertiary"))
+        row.addWidget(Text(f"{value}px", style="label", color="text-secondary"))
         row.addStretch(1)
         spacing.add_layout = spacing.content_layout().addLayout(row)
     grid.add(spacing)
@@ -267,7 +267,7 @@ def foundations_page() -> QWidget:
     for name, value in tokens.radius.items():
         cell = QVBoxLayout()
         cell.addWidget(_RadiusTile(value))
-        cell.addWidget(Text(name, style="caption", color="text-tertiary"), 0, Qt.AlignmentFlag.AlignHCenter)
+        cell.addWidget(Text(name, style="label", color="text-secondary"), 0, Qt.AlignmentFlag.AlignHCenter)
         row.addLayout(cell)
     row.addStretch(1)
     radius.content_layout().addLayout(row)
