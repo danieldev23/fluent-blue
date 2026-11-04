@@ -26,6 +26,16 @@ def _open(qtbot, width=1536, height=1024):
     return window, window.pages["Overview"]
 
 
+def _environment() -> str:
+    from fluent_blue.compatibility.qt import QApplication, QFontMetrics
+
+    screen = QApplication.primaryScreen()
+    font = QApplication.font()
+    advance = QFontMetrics(font).horizontalAdvance("Fluent Blue components")
+    return (f"font={font.family()!r} px={font.pixelSize()} pt={font.pointSizeF():.1f} advance={advance} "
+            f"dpi={screen.logicalDotsPerInch():.0f} dpr={screen.devicePixelRatio()} screen={screen.size().width()}x{screen.size().height()}")
+
+
 def _widths(page):
     return [[max(tile.minimumSizeHint().width(), tile.minimumWidth()) for tile, _ in band] for band in page._bands]
 
@@ -34,7 +44,7 @@ def test_designed_width_keeps_every_band_compact(qtbot):
     _, page = _open(qtbot)
     page._reflow(DESIGNED_PAGE_WIDTH)
     rows = [len(row) for row in page._current_rows]
-    assert rows[0] == 3, f"hero band wrapped: {rows}, widths {_widths(page)}"
+    assert rows[0] == 3, f"hero band wrapped: {rows}, widths {_widths(page)}, {_environment()}"
     assert len(rows) <= 5, f"a band wrapped more than once: {rows}, widths {_widths(page)}"
     assert sum(rows) == sum(len(band) for band in page._bands)
 
