@@ -16,7 +16,7 @@ from .components.selection import *  # noqa: F403
 from .core import Configuration, DesignTokens, Theme, ThemeManager, config, configure
 from .icons import has_icon, icon, icon_names, icon_pixmap, register_icon, register_icon_file
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     "BINDING", "BINDING_VERSION", "QT_VERSION", "Configuration", "DesignTokens", "Theme", "ThemeManager", "__version__",

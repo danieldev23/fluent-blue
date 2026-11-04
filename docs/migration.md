@@ -21,4 +21,4 @@ Keep using Qt layouts, or use `Stack`, `Grid` and `Container` for token-based sp
 
 Fluent Blue follows semantic versioning. Until 1.0, breaking changes bump the minor version and are listed under *Changed* or *Removed* in the [changelog](changelog.md), with the replacement for each removed API. Deprecated APIs emit a `DeprecationWarning` for at least one minor release before removal.
 
-There are no migrations yet: 0.1.0 is the first release.
+Nothing needs migrating yet. 0.2.0 only adds components (`Rating`, `RangeSlider`, `Accordion`, `Carousel`, `Kbd`, `VideoPlayer`) and two icons; code written for 0.1.0 runs unchanged.

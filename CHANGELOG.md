@@ -2,7 +2,7 @@
 
 All notable changes are documented here. The project follows [Semantic Versioning](https://semver.org/); until 1.0, breaking changes bump the minor version.
 
-## Unreleased
+## 0.2.0 - 2026-11-04
 
 ### Added
 
@@ -13,6 +13,14 @@ All notable changes are documented here. The project follows [Semantic Versionin
 - `Kbd`: keyboard shortcuts drawn as key caps.
 - `VideoPlayer`: a themed player with seek, volume, speed, full screen and keyboard control, built on QtMultimedia. It degrades to an explanation where QtMultimedia cannot load.
 - Icons `volume` and `volume-off`.
+
+### Fixed
+
+- `DataTable`'s item delegate is parented to its view, so it can no longer be destroyed before the view that paints with it.
+
+### Migration
+
+No breaking changes: everything from 0.1.0 works unchanged.
 
 ## 0.1.0 - 2026-11-04
 
