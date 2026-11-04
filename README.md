@@ -11,7 +11,9 @@
 
 <p align="center">
   <a href="https://github.com/danieldev23/fluent-blue/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/danieldev23/fluent-blue/actions/workflows/ci.yml/badge.svg"></a>
-  <img alt="Python 3.11 | 3.13" src="https://img.shields.io/badge/python-3.11%20%7C%203.13-blue">
+  <a href="https://pypi.org/project/fluent-blue/"><img alt="PyPI" src="https://img.shields.io/pypi/v/fluent-blue?color=2468F2&label=PyPI"></a>
+  <a href="https://pypi.org/project/fluent-blue/"><img alt="Downloads" src="https://img.shields.io/pypi/dm/fluent-blue?color=2468F2"></a>
+  <img alt="Python 3.11 | 3.12 | 3.13" src="https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue">
   <img alt="Qt 6" src="https://img.shields.io/badge/Qt-6.12-41cd52">
   <img alt="License MIT" src="https://img.shields.io/badge/license-MIT-green">
   <img alt="Tests" src="https://img.shields.io/badge/tests-748%20passing-brightgreen">
@@ -20,6 +22,27 @@
 ---
 
 Fluent Blue gives a Qt application the consistency of a real design system: a central set of design tokens, a runtime theme engine, an original icon set, and more than a hundred components that all read from the same tokens. It ships with **Design Studio**, an interactive showcase where every example is a live widget, and with **AI agent briefs** so coding assistants can use the library without inventing APIs.
+
+## Install in 30 seconds
+
+```bash
+pip install "fluent-blue[pyqt6]"      # or: pip install "fluent-blue[pyside6]"
+fluent-blue-studio                     # opens the interactive showcase
+```
+
+Then build your first window:
+
+```python
+from fluent_blue import Button, Card, ThemeManager
+from fluent_blue.compatibility.qt import QApplication, QVBoxLayout
+
+app = QApplication([])
+ThemeManager.set_theme("dark")
+card = Card(title="Hello, Fluent Blue")
+card.add(Button("Get Started", variant="primary"))
+card.show()
+app.exec()
+```
 
 ## Highlights
 
@@ -80,21 +103,26 @@ Every image is a headless grab of the live application at 1536 × 1024, produced
 
 ## Installation
 
-Pick one Qt binding. Fluent Blue never imports both in one process.
+Fluent Blue is on PyPI as [`fluent-blue`](https://pypi.org/project/fluent-blue/). Pick one Qt binding; the library never imports both in one process.
+
+| | PyQt6 (GPL / commercial) | PySide6 (LGPL) |
+| --- | --- | --- |
+| pip | `pip install "fluent-blue[pyqt6]"` | `pip install "fluent-blue[pyside6]"` |
+| uv | `uv add "fluent-blue[pyqt6]"` | `uv add "fluent-blue[pyside6]"` |
+| Only the showcase | `pipx install "fluent-blue[pyqt6]"` | `pipx install "fluent-blue[pyside6]"` |
+
+On Windows PowerShell, keep the quotes exactly as shown; in `cmd.exe` they can be omitted. If a binding is already installed, `pip install fluent-blue` is enough: Fluent Blue uses the binding that is already imported, then the one named in `FLUENT_BLUE_QT_BINDING`, then whichever of PyQt6 and PySide6 it finds first.
+
+Check the installation and open Design Studio:
 
 ```bash
-pip install "fluent-blue[pyqt6]"
-# or
-pip install "fluent-blue[pyside6]"
-```
-
-Then open the showcase:
-
-```bash
+python -c "import fluent_blue as f; print(f.__version__, f.BINDING, f.BINDING_VERSION, 'Qt', f.QT_VERSION)"
 fluent-blue-studio
 ```
 
-Verified on Qt 6.12: PyQt6 6.12.0 with Python 3.11 and 3.13, PySide6 6.12.0 with Python 3.12 and 3.13. **On Linux, PySide6 needs Python 3.12 or newer**: the Linux wheels of PySide6 6.9 to 6.12 corrupt reference counts when custom signals are emitted, which Python 3.12 tolerates and Python 3.11 does not (macOS is unaffected and verified on 3.11; Windows on 3.11 is untested). Older Qt 6.5+ releases should work but are not exercised by the test suite.
+Upgrade with `pip install -U "fluent-blue[pyqt6]"`. Releases follow [semantic versioning](https://semver.org/) and are listed in the [changelog](https://github.com/danieldev23/fluent-blue/blob/master/CHANGELOG.md).
+
+**Requirements.** Python 3.11+ and Qt 6.5+ (verified on Qt 6.12 with PyQt6 6.12.0 on Python 3.11 and 3.13, and PySide6 6.12.0 on Python 3.12 and 3.13). **On Linux, PySide6 needs Python 3.12 or newer**: the Linux wheels of PySide6 6.9 to 6.12 corrupt reference counts when custom signals are emitted, which Python 3.12 tolerates and Python 3.11 does not (macOS is unaffected and verified on 3.11; Windows on 3.11 is untested). Minimal Linux images also need Qt's system libraries: `sudo apt-get install -y libegl1 libgl1 libopengl0 libxkbcommon-x11-0 libxcb-cursor0 libdbus-1-3 libfontconfig1`.
 
 ## Quick start
 
