@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/screenshots/overview-light.png" alt="Fluent Blue Design Studio, light theme" width="880">
+  <img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/overview-light.png" alt="Fluent Blue Design Studio, light theme" width="880">
 </p>
 
 <h1 align="center">Fluent Blue</h1>
@@ -32,8 +32,8 @@ Fluent Blue gives a Qt application the consistency of a real design system: a ce
 - **Honest quality gates**: 748 tests on both bindings, a UI audit that measures clipped text, overlaps and contrast on every page, and a performance report.
 
 <p align="center">
-  <img src="assets/screenshots/overview-dark.png" alt="Design Studio, dark theme" width="430">
-  <img src="assets/screenshots/data-tables-light.png" alt="DataTable page" width="430">
+  <img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/overview-dark.png" alt="Design Studio, dark theme" width="430">
+  <img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/data-tables-light.png" alt="DataTable page" width="430">
 </p>
 
 ## Installation
@@ -81,7 +81,7 @@ Import components from `fluent_blue` and Qt classes from `fluent_blue.compatibil
 
 ## Tutorial: a small Projects app in five steps
 
-The complete file lives in [`examples/projects_app.py`](examples/projects_app.py) and is run by the test suite, so it cannot drift from the library.
+The complete file lives in [`examples/projects_app.py`](https://github.com/danieldev23/fluent-blue/blob/master/examples/projects_app.py) and is run by the test suite, so it cannot drift from the library.
 
 **1. The shell.** A `Sidebar` on the left and a `QStackedWidget` on the right is the shape of most desktop tools.
 
@@ -179,16 +179,16 @@ Read tokens anywhere: `ThemeManager.color("text-secondary")`, `ThemeManager.qcol
 Every component section has five tabs: a copyable Python example, Properties and Signals generated from the source, Usage guidance and an **AI Prompt** that gives a coding agent the exact API.
 
 <p align="center">
-  <img src="assets/screenshots/component-page-light.png" alt="A component page in Design Studio" width="880">
+  <img src="https://raw.githubusercontent.com/danieldev23/fluent-blue/master/assets/screenshots/component-page-light.png" alt="A component page in Design Studio" width="880">
 </p>
 
 ## Working with AI coding agents
 
 Fluent Blue ships briefs that describe each component from its own source, so an assistant cannot hallucinate parameters:
 
-- [`AGENTS.md`](AGENTS.md): rules of the library and an index of every component brief.
-- [`docs/ai/components/*.md`](docs/ai/components): one brief per component, with signature, parameters, signals, methods and a verified example.
-- [`llms.txt`](llms.txt): a machine-readable index.
+- [`AGENTS.md`](https://github.com/danieldev23/fluent-blue/blob/master/AGENTS.md): rules of the library and an index of every component brief.
+- [`docs/ai/components/*.md`](https://github.com/danieldev23/fluent-blue/blob/master/docs/ai/components): one brief per component, with signature, parameters, signals, methods and a verified example.
+- [`llms.txt`](https://github.com/danieldev23/fluent-blue/blob/master/llms.txt): a machine-readable index.
 
 ```bash
 python -m fluent_blue.agent_prompts Button          # print a brief
@@ -211,7 +211,7 @@ A test fails if the committed briefs fall behind the code.
 | Layout | `Container`, `Stack`, `Grid`, `Splitter`, `Panel`, `Drawer`, `Modal`, `CollapsiblePanel`, `ScrollArea`, `FluentWindow`, `TitleBar` |
 | Advanced | `DatePicker`, `Calendar`, `TimePicker`, `ColorPicker`, `FilePicker`, `ImageViewer`, `CodeEditor`, `LogViewer`, `TreeView`, `FileTree`, `Stepper`, `Wizard`, `RichTextEditor` |
 
-Full documentation, with a screenshot and the API of each component, is in [`docs/`](docs/index.md) and builds with MkDocs Material.
+Full documentation, with a screenshot and the API of each component, is in [`docs/`](https://github.com/danieldev23/fluent-blue/blob/master/docs/index.md) and builds with MkDocs Material.
 
 ## Architecture
 
@@ -256,8 +256,8 @@ twine check dist/*
 
 ## Project status
 
-Fluent Blue is at version 0.1.0. The public API follows semantic versioning: breaking changes bump the minor version until 1.0, and every change is recorded in [`CHANGELOG.md`](CHANGELOG.md). See [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to propose components, [`SECURITY.md`](SECURITY.md) for reporting vulnerabilities and [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) for community expectations.
+Fluent Blue is at version 0.1.0. The public API follows semantic versioning: breaking changes bump the minor version until 1.0, and every change is recorded in [`CHANGELOG.md`](https://github.com/danieldev23/fluent-blue/blob/master/CHANGELOG.md). See [`CONTRIBUTING.md`](https://github.com/danieldev23/fluent-blue/blob/master/CONTRIBUTING.md) for how to propose components, [`SECURITY.md`](https://github.com/danieldev23/fluent-blue/blob/master/SECURITY.md) for reporting vulnerabilities and [`CODE_OF_CONDUCT.md`](https://github.com/danieldev23/fluent-blue/blob/master/CODE_OF_CONDUCT.md) for community expectations.
 
 ## License and independence
 
-Fluent Blue is released under the [MIT License](LICENSE). The icon set and artwork are original. The project is independent: it is not affiliated with, or endorsed by, Microsoft, The Qt Company, Riverbank Computing or Ant Group. The primary blue scale overlaps with values from Ant Design's MIT-licensed palette; everything else in the visual language was designed for this project.
+Fluent Blue is released under the [MIT License](https://github.com/danieldev23/fluent-blue/blob/master/LICENSE). The icon set and artwork are original. The project is independent: it is not affiliated with, or endorsed by, Microsoft, The Qt Company, Riverbank Computing or Ant Group. The primary blue scale overlaps with values from Ant Design's MIT-licensed palette; everything else in the visual language was designed for this project.
