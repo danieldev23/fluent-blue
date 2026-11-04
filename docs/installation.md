@@ -2,8 +2,10 @@
 
 ## Requirements
 
-- Python 3.11 or 3.13 (tested). Python 3.12 should work but is not part of the test matrix yet.
-- One Qt binding: PyQt6 or PySide6, version 6.5 or later. Verified with 6.12.
+- Python 3.11, 3.12 or 3.13.
+- One Qt binding, version 6.5 or later (verified with 6.12):
+    - **PyQt6** on Python 3.11 or newer.
+    - **PySide6** on Python 3.11 or newer on macOS, and on Python 3.12 or newer on Linux. The Linux wheels of PySide6 6.9 to 6.12 corrupt the reference count of `True`/`False` whenever a Python-declared signal is emitted; Python 3.12 makes those objects immortal, so it is harmless there, while on Python 3.11 the process aborts after a few hundred emissions. Fluent Blue warns at import when it detects this combination. Windows on Python 3.11 is untested.
 
 Fluent Blue has no other dependencies.
 

@@ -47,6 +47,21 @@ def _select_binding() -> str:
 
 BINDING = _select_binding()
 
+# The Linux wheels of PySide6 6.9 to 6.12 corrupt the reference count of True/False whenever
+# a Python-declared Signal is emitted (the macOS wheels do not). Python 3.12 makes those
+# objects immortal, so the fault is harmless there; on 3.11 the interpreter aborts after a
+# few hundred emits.
+PYSIDE_MIN_PYTHON_ON_LINUX = (3, 12)
+if BINDING == "PySide6" and sys.platform.startswith("linux") and sys.version_info < PYSIDE_MIN_PYTHON_ON_LINUX:
+    import warnings
+
+    warnings.warn(
+        "On Linux, Fluent Blue supports PySide6 on Python 3.12 or newer: the Linux wheels of PySide6 6.9 to 6.12 "
+        "corrupt reference counts when custom signals are emitted on Python 3.11, and the process can abort. "
+        "Use Python 3.12+ or PyQt6.",
+        RuntimeWarning, stacklevel=2,
+    )
+
 QtCore = importlib.import_module(f"{BINDING}.QtCore")
 QtGui = importlib.import_module(f"{BINDING}.QtGui")
 QtWidgets = importlib.import_module(f"{BINDING}.QtWidgets")
@@ -67,11 +82,18 @@ QT_VERSION = QtCore.qVersion()
 
 
 def delete_now(obj) -> None:
-    """Destroy a QObject immediately, so app-wide restyling no longer has to visit it."""
-    if BINDING == "PyQt6":
-        importlib.import_module("PyQt6.sip").delete(obj)
-    else:
-        importlib.import_module("shiboken6").delete(obj)
+    """Destroy a QObject immediately, so app-wide restyling no longer has to visit it.
+
+    Deletion goes through Qt's deferred delete, which works identically on both bindings. Do
+    not disconnect Python slots first: ``disconnect`` of a bound method on PySide6 6.12 with
+    Python 3.11 corrupts the reference count of ``True``/``False`` and aborts the process
+    later, whereas destroying a connected receiver is clean.
+    """
+    if isinstance(obj, QtWidgets.QWidget):
+        obj.hide()
+        obj.setParent(None)
+    obj.deleteLater()
+    QtCore.QCoreApplication.sendPostedEvents(obj, QtCore.QEvent.Type.DeferredDelete.value)
 
 
 SignalInstanceTypes = (QtCore.pyqtBoundSignal,) if BINDING == "PyQt6" else (QtCore.SignalInstance,)

@@ -106,3 +106,19 @@ def paint_spinner(painter: QPainter, rect: QRectF, color: str, angle: float, wid
     pen.setCapStyle(Qt.PenCapStyle.RoundCap)
     painter.setPen(pen)
     painter.drawArc(area, int(-angle * 16), 90 * 16)
+
+
+def fit_wrapped_labels(widget) -> None:
+    """Give wrapped labels inside ``widget`` the height their text needs at their current width.
+
+    Nested layouts can under-estimate a wrapped label's height by one line, which clips the
+    last line on some fonts. Call this from ``resizeEvent``; the value only changes when the
+    width does, so it settles after one extra layout pass.
+    """
+    from ..compatibility.qt import QLabel
+
+    for label in widget.findChildren(QLabel):
+        if label.wordWrap() and label.text() and label.width() > 0:
+            needed = label.heightForWidth(label.width())
+            if needed > 0 and needed != label.minimumHeight():
+                label.setMinimumHeight(needed)

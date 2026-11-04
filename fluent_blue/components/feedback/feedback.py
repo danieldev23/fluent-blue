@@ -19,7 +19,7 @@ from ...compatibility.qt import (
 from ...core.animations import animate, apply_elevation
 from ...core.theme_manager import ThemeManager
 from ...icons import icon_pixmap
-from ..base import ThemedMixin, check_choice, paint_spinner
+from ..base import ThemedMixin, check_choice, fit_wrapped_labels, paint_spinner
 from ..buttons.button import Button, IconButton
 from ..display.media import ProgressBar
 from ..display.text import Text
@@ -87,6 +87,10 @@ class Alert(ThemedMixin, QFrame):
             row.addWidget(close, 0, Qt.AlignmentFlag.AlignTop)
         self.bind_theme()
         self.refresh_theme()
+
+    def resizeEvent(self, event) -> None:  # noqa: N802 - Qt override
+        super().resizeEvent(event)
+        fit_wrapped_labels(self)
 
     def dismiss(self) -> None:
         """Hide the alert and emit ``closed``."""
@@ -156,6 +160,10 @@ class ToastCard(ThemedMixin, QFrame):
         self._closing = False
         self.bind_theme()
         self.refresh_theme()
+
+    def resizeEvent(self, event) -> None:  # noqa: N802 - Qt override
+        super().resizeEvent(event)
+        fit_wrapped_labels(self)
 
     def refresh_theme(self) -> None:
         apply_elevation(self, 3)

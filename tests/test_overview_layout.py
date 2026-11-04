@@ -27,7 +27,7 @@ def _open(qtbot, width=1536, height=1024):
 
 
 def _widths(page):
-    return [[max(tile.minimumSizeHint().width(), tile.minimumWidth()) for tile, _ in page._bands]]
+    return [[max(tile.minimumSizeHint().width(), tile.minimumWidth()) for tile, _ in band] for band in page._bands]
 
 
 def test_designed_width_keeps_every_band_compact(qtbot):

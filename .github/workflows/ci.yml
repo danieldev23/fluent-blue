@@ -37,7 +37,7 @@ jobs:
         python: ["3.13"]
         include:
           - { os: ubuntu-latest, binding: PyQt6, python: "3.11" }
-          - { os: ubuntu-latest, binding: PySide6, python: "3.11" }
+          - { os: ubuntu-latest, binding: PySide6, python: "3.12" }  # PySide6 on Linux needs 3.12+, see docs/installation.md
     env:
       FLUENT_BLUE_QT_BINDING: ${{ matrix.binding }}
     steps:

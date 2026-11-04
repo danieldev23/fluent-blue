@@ -31,7 +31,7 @@ Fluent Blue gives a Qt application the consistency of a real design system: a ce
 
 ## Compatibility
 
-Verified with Python 3.11 and 3.13 on Qt 6.12 (PyQt6 6.12.0 and PySide6 6.12.0). Qt 6.5 and later should work, but only the versions above are exercised by the test suite.
+Verified on Qt 6.12: PyQt6 6.12.0 with Python 3.11 and 3.13, PySide6 6.12.0 with Python 3.12 and 3.13. On Linux, PySide6 needs Python 3.12 or newer, see [Installation](installation.md). Qt 6.5 and later should work, but only the versions above are exercised by the test suite.
 
 ## License
 

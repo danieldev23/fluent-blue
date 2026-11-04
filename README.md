@@ -52,7 +52,7 @@ Then open the showcase:
 fluent-blue-studio
 ```
 
-Verified with Python 3.11 and 3.13 on Qt 6.12 (PyQt6 6.12.0, PySide6 6.12.0). Older Qt 6.5+ releases should work but have not been exercised by the test suite.
+Verified on Qt 6.12: PyQt6 6.12.0 with Python 3.11 and 3.13, PySide6 6.12.0 with Python 3.12 and 3.13. **On Linux, PySide6 needs Python 3.12 or newer**: the Linux wheels of PySide6 6.9 to 6.12 corrupt reference counts when custom signals are emitted, which Python 3.12 tolerates and Python 3.11 does not (macOS is unaffected and verified on 3.11; Windows on 3.11 is untested). Older Qt 6.5+ releases should work but are not exercised by the test suite.
 
 ## Quick start
 

@@ -8,6 +8,10 @@ Neither PyQt6 nor PySide6 is installed in the active environment. Install one ex
 
 Something imported the other binding before Fluent Blue. Remove one binding from the environment, or set `FLUENT_BLUE_QT_BINDING` to the one you want and make sure nothing imports the other.
 
+## `Fatal Python error: bool_dealloc` or an abort on exit with PySide6
+
+You are running PySide6 on Linux with Python 3.11. The Linux wheels of PySide6 6.9 to 6.12 corrupt the reference count of `True`/`False` when custom signals are emitted; Python 3.12 and later tolerate it. Upgrade Python to 3.12 or newer, or use PyQt6.
+
 ## Nothing shows, or the process exits at once
 
 A `QApplication` must exist before any widget, and `app.exec()` must run. The examples in `examples/` show the shape.

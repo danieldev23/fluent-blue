@@ -45,6 +45,12 @@ _CLASS_DOCS = {
 }
 
 
+def _is_signal(value) -> bool:
+    # Exact type identity, not isinstance: on PySide6 with Python 3.11, isinstance against
+    # Signal corrupts the refcount of True/False and aborts the process after a few hundred calls.
+    return type(value) in SignalTypes
+
+
 def clean_markup(text: str) -> str:
     """Reduce reStructuredText roles and literals to plain text."""
     text = re.sub(r":\w+:`~?([^`]+)`", lambda m: m.group(1).rsplit(".", 1)[-1], text)
@@ -124,7 +130,7 @@ def signals(cls) -> list[SignalDoc]:
         if not klass.__module__.startswith("fluent_blue"):
             continue
         for name, value in vars(klass).items():
-            if isinstance(value, SignalTypes) and not name.startswith("_"):
+            if _is_signal(value) and not name.startswith("_"):
                 found.setdefault(name, None)
     return [SignalDoc(n, docs.get(n, ("", ""))[0], docs.get(n, ("", ""))[1]) for n in found]
 
@@ -146,5 +152,5 @@ def declared_signal_names(widget) -> list[str]:
     names = []
     for klass in type(widget).__mro__:
         if klass.__module__.startswith("fluent_blue"):
-            names += [n for n, v in vars(klass).items() if isinstance(v, SignalTypes) and not n.startswith("_")]
+            names += [n for n, v in vars(klass).items() if _is_signal(v) and not n.startswith("_")]
     return names

@@ -13,7 +13,11 @@ def _assert_fits(host, qtbot):
     for label in host.findChildren(QLabel):
         if label.wordWrap() and label.isVisible() and label.text():
             needed = label.heightForWidth(label.width())
-            assert label.height() >= needed, f"{label.text()!r}: {label.height()} < {needed}"
+            parent = label.parentWidget()
+            detail = (f"label {label.width()}x{label.height()} needs {needed}; {type(parent).__name__} {parent.width()}x{parent.height()} "
+                      f"min {parent.minimumSizeHint().width()}x{parent.minimumSizeHint().height()}; host {host.width()}x{host.height()}; "
+                      f"font {label.font().family()} {label.font().pixelSize}px")
+            assert label.height() >= needed, f"{label.text()!r}: {detail}"
 
 
 @pytest.mark.parametrize("width", [180, 240, 320, 600])
