@@ -50,13 +50,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libegl1 libgl1 libopengl0 libxkbcommon-x11-0 \
-            libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libxcb-shape0 libxcb-xinerama0 libdbus-1-3 libfontconfig1
+            libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libxcb-shape0 libxcb-xinerama0 libdbus-1-3 libfontconfig1 fonts-noto-core
       - name: Install
         run: pip install -e ".[dev]" "${{ matrix.binding }}"
       - name: Report binding
         run: python -c "import fluent_blue as f; print(f.BINDING, f.BINDING_VERSION, 'Qt', f.QT_VERSION)"
       - name: Tests
-        run: pytest -p no:cacheprovider
+        # faulthandler prints a Python traceback if Qt aborts the process.
+        run: python -X faulthandler -m pytest -p no:cacheprovider -o faulthandler_timeout=300
       - name: UI audit
         if: matrix.os == 'ubuntu-latest' && matrix.python == '3.13'
         run: python scripts/ui_audit.py --deep
