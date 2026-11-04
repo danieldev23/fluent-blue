@@ -93,6 +93,9 @@ ignore = [
     "UP007",  # Keep `Optional` style unions where Qt stubs use them.
 ]
 
+[tool.ruff.lint.isort]
+known-first-party = ["fluent_blue"]
+
 [tool.ruff.lint.per-file-ignores]
 "fluent_blue/__init__.py" = ["F401", "F403", "F405"]
 "fluent_blue/components/__init__.py" = ["F403"]

@@ -40,8 +40,16 @@ def _widths(page):
     return [[max(tile.minimumSizeHint().width(), tile.minimumWidth()) for tile, _ in band] for band in page._bands]
 
 
+def _has_ui_font() -> bool:
+    from fluent_blue.compatibility.qt import QApplication, QFontMetrics
+
+    return QFontMetrics(QApplication.font()).horizontalAdvance("Fluent Blue components") < 190
+
+
 def test_designed_width_keeps_every_band_compact(qtbot):
     _, page = _open(qtbot)
+    if not _has_ui_font():
+        pytest.skip(f"no proportional UI font in this environment: {_environment()}")
     page._reflow(DESIGNED_PAGE_WIDTH)
     rows = [len(row) for row in page._current_rows]
     assert rows[0] == 3, f"hero band wrapped: {rows}, widths {_widths(page)}, {_environment()}"

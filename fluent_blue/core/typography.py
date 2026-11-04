@@ -1,6 +1,7 @@
 """Convert typography tokens into ``QFont`` objects."""
 from __future__ import annotations
 
+import sys
 from functools import lru_cache
 
 from ..compatibility.qt import QFont, QFontDatabase, QGuiApplication
@@ -24,13 +25,19 @@ def _installed_families() -> frozenset:
 
 
 def _available(families) -> list[str]:
-    # Naming a missing family makes Qt build its alias table, a slow startup step, so
-    # drop families this system lacks. The first installed preference wins.
+    """Keep the families this system can resolve, in preference order.
+
+    Apple's system font name only means something on macOS, and minimal platforms such as
+    the offscreen plugin may list no families at all; then Qt resolves the names itself.
+    """
+    candidates = [name for name in families if sys.platform == "darwin" or not name.startswith(".")]
     if QGuiApplication.instance() is None:
-        return list(families)
+        return candidates
     installed = _installed_families()
-    usable = [name for name in families if name in installed or name.startswith(".")]
-    return usable or list(families)
+    if not installed:
+        return candidates
+    usable = [name for name in candidates if name in installed or name.startswith(".")]
+    return usable or candidates
 
 
 def make_font(style: str | TypeStyle = "body-medium", *, families=FONT_FAMILIES, mono_families=MONO_FAMILIES) -> QFont:

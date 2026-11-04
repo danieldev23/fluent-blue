@@ -16,7 +16,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from fluent_blue import ThemeManager  # noqa: E402
 from fluent_blue.compatibility.qt import (  # noqa: E402
-    QAbstractButton, QAbstractScrollArea, QApplication, QComboBox, QLabel, QLineEdit, QStackedWidget, Qt, QTabWidget, QWidget,
+    QAbstractButton,
+    QAbstractScrollArea,
+    QApplication,
+    QComboBox,
+    QLabel,
+    QLineEdit,
+    QStackedWidget,
+    Qt,
+    QTabWidget,
+    QWidget,
 )
 from fluent_blue.core.palette import contrast_ratio  # noqa: E402
 from fluent_blue.studio.app import StudioWindow  # noqa: E402

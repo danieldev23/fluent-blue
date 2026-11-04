@@ -155,16 +155,16 @@ def _semantic_dark(colors: dict[str, str], name: str, base: str) -> None:
 # Roles that carry or sit behind text. They are applied last in each theme so that every
 # text pairing meets WCAG AA (4.5:1). The ramps keep their brand values; tests enforce this.
 _ACCESSIBLE_LIGHT = {
-    "text-tertiary": "#6E6E6E",
+    "text-tertiary": "#555555",
     "primary": "#0E68EA", "primary-hover": "#0958D9", "primary-pressed": "#0848B8", "primary-text": "#0958D9",
-    "brand-gradient-start": "#0E68EA", "brand-gradient-end": "#116DF0",
+    "brand-gradient-start": "#0E68EA", "brand-gradient-end": "#0F63DF",
     "success-text": "#237804", "warning-text": "#9A5C00", "error-text": "#CF1322", "info-text": "#0958D9",
     "error": "#D92D30", "error-hover": "#C4262A", "error-pressed": "#A81E22",
 }
 _ACCESSIBLE_DARK = {
-    "text-tertiary": "#969696",
+    "text-tertiary": "#A6A6A6",
     "primary": "#1668DC", "primary-hover": "#1A6DE4", "primary-pressed": "#1554AD", "primary-text": "#69B1FF",
-    "border-focus": "#4096FF", "brand-gradient-start": "#1668DC", "brand-gradient-end": "#2B7BEA",
+    "border-focus": "#4096FF", "brand-gradient-start": "#1668DC", "brand-gradient-end": "#1F6BD6",
     "success-text": "#73D13D", "warning-text": "#FFC53D", "error-text": "#FF7875", "info-text": "#69B1FF",
     "error": "#C93538", "error-hover": "#D13D40", "error-pressed": "#A82B2E",
 }
